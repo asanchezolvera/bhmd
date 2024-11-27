@@ -6,6 +6,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import Header from "./components/Header";
+import HelloBar from "./components/HelloBar";
 
 import "./tailwind.css";
 
@@ -32,6 +34,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Header />
+        <HelloBar />
         {children}
         <ScrollRestoration />
         <Scripts />
