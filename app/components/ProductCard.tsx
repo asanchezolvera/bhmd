@@ -5,7 +5,7 @@ import { Product } from "~/types/types";
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link
-      to={`/products/${product.slug}`}
+      to={`/product/${product.slug}`}
       className="w-full cursor-pointer group">
       <div className="w-100 h-48 relative rounded-md overflow-hidden group-hover:shadow-xl group-hover:-translate-y-1 group-hover:scale-[1.01] transition-all duration-300">
         {product.is_bestseller && (

@@ -8,6 +8,7 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 import Header from "./components/Header";
 import HelloBar from "./components/HelloBar";
+import Chat from "./components/Chat";
 
 import "./tailwind.css";
 
@@ -33,10 +34,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="w-full min-h-screen overflow-x-hidden bg-white">
         <Header />
         <HelloBar />
         {children}
+        <Chat />
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -7,7 +7,7 @@ import {
 
 export default function Header() {
   return (
-    <header className="w-full bg-white py-4 border-b-[1px] border-slate-100 shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-white py-4 border-b-[1px] border-slate-100 shadow-md">
       <div className="container">
         <div className="flex justify-between items-center">
           <div className="flex justify-start items-center gap-2">
@@ -28,7 +28,9 @@ export default function Header() {
 
           <div className="flex justify-end items-center gap-4">
             <HiOutlineMagnifyingGlass size={24} className=" text-slate-700" />
-            <HiOutlineUserCircle size={24} className=" text-slate-700" />
+            <Link to="/login">
+              <HiOutlineUserCircle size={24} className=" text-slate-700" />
+            </Link>
             <HiOutlineShoppingBag size={24} className=" text-slate-700" />
           </div>
         </div>

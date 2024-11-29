@@ -14,3 +14,7 @@ body {
 .container {
   @apply mx-auto max-w-screen-2xl px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12;
 }
+
+.input {
+  @apply text-sm border-[1px] border-slate-200 bg-white shadow-sm rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
