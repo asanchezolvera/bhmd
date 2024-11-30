@@ -40,7 +40,7 @@ export async function fetchProductBySlug(
 ): Promise<types.Product[]> {
   const { data: product, error } = await supabase
     .from("products")
-    .select("*")
+    .select("*, product_categories(name)")
     .eq("slug", slug)
     .single();
 

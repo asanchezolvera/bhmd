@@ -3,12 +3,16 @@ export default function OfferSelectorOption({
   id,
   price,
   children,
+  isDefault,
 }: {
   label: string;
   id: string;
   price: number;
+  isDefault?: boolean;
   children?: React.ReactNode;
 }) {
+  const discountPrice = (price * 0.8).toFixed(0);
+
   return (
     <div className="w-full ">
       <input
@@ -16,15 +20,27 @@ export default function OfferSelectorOption({
         id={id}
         name="offer_selection"
         value={id}
+        defaultChecked={isDefault}
         className="sr-only peer"
       />
       <label
         htmlFor={id}
-        className="w-full flex flex-col justify-start items-start gap-2 p-4 border-[1px] rounded-md transition-colors duration-300 cursor-pointer border-slate-200 focus:outline-none hover:bg-slate-50 peer-checked:ring-blue-500 peer-checked:ring-1 peer-checked:border-blue-500">
+        className="w-full flex flex-col justify-start items-start gap-2 p-4 border-[1px] rounded-md transition-all duration-300 cursor-pointer border-slate-200 opacity-65 hover:opacity-100 focus:outline-none peer-checked:opacity-100 peer-checked:ring-blue-500 peer-checked:ring-2 peer-checked:border-transparent">
         <span className="sr-only">{label}</span>
         <div className="w-full flex justify-between items-center">
           <span className="font-semibold text-sm text-slate-700">{label}</span>
-          <span className="text-sm text-slate-700">${price}</span>
+          <div className="flex justify-end items-center gap-1">
+            {(id === "1" && (
+              <span className="text-sm text-slate-700">${discountPrice}</span>
+            )) ||
+              ""}
+            <span
+              className={`text-sm text-slate-700 ${
+                id === "1" ? "line-through text-slate-300" : ""
+              }`}>
+              ${price}
+            </span>
+          </div>
         </div>
         {children}
       </label>

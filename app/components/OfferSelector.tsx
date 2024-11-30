@@ -1,4 +1,5 @@
 import { Form } from "@remix-run/react";
+import QuantitySelector from "./QuantitySelector";
 import OfferSelectorOption from "./OfferSelectorOption";
 import { HiMiniCheck } from "react-icons/hi2";
 
@@ -7,7 +8,15 @@ export default function OfferSelector({ price }: { price: number }) {
     <Form
       method="post"
       className="w-full flex flex-col justify-start items-stretch gap-4">
-      <OfferSelectorOption label="Subscribe & Save" id="1" price={price}>
+      <div className="w-full flex justify-between items-center">
+        <p className="text-slate-600 font-semibold">Make a selection:</p>
+        <QuantitySelector />
+      </div>
+      <OfferSelectorOption
+        label="Subscribe & Save"
+        id="1"
+        price={price}
+        isDefault>
         <ul>
           <li className="flex justify-start items-center gap-1 text-slate-600 text-sm">
             <HiMiniCheck size={16} className="text-rose-500" />
@@ -15,7 +24,11 @@ export default function OfferSelector({ price }: { price: number }) {
           </li>
           <li className="flex justify-start items-center gap-1 text-slate-600 text-sm">
             <HiMiniCheck size={16} className="text-rose-500" />
-            Start earning points toward future orders
+            Start earning{" "}
+            <span className="font-serif text-rose-500 font-semibold italic">
+              Luxe Loyalty
+            </span>{" "}
+            points toward future orders
           </li>
           <li className="flex justify-start items-center gap-1 text-slate-600 text-sm">
             <HiMiniCheck size={16} className="text-rose-500" />

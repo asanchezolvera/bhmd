@@ -23,6 +23,11 @@ export default function Header() {
                 className="text-slate-700 text-sm font-medium hover:text-blue-500 transition-colors duration-300">
                 Shop All
               </Link>
+              <Link
+                to="/"
+                className="text-slate-700 text-sm font-medium hover:text-blue-500 transition-colors duration-300">
+                Earn Rewards
+              </Link>
             </nav>
           </div>
 
