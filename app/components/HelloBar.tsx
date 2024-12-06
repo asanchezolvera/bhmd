@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
 import { Announcement } from "~/types/types";
 
 const announcements: Announcement[] = [
@@ -30,9 +31,32 @@ export default function HelloBar() {
   return (
     <div className="flex justify-center items-center bg-rose-50 py-2">
       <div className="container">
-        <p className="text-sm text-slate-700 text-center">
-          {announcements[index].text}
-        </p>
+        <div className="flex justify-between items-center w-100 lg:max-w-4xl lg:mx-auto">
+          <button
+            onClick={() =>
+              setIndex(
+                (prev) =>
+                  (prev - 1 + announcements.length) % announcements.length
+              )
+            }>
+            <HiMiniChevronLeft
+              size={16}
+              className="text-slate-500 hover:text-slate-700 transition-colors duration-300"
+            />
+          </button>
+          <p className="text-sm text-slate-700 text-center">
+            {announcements[index].text}
+          </p>
+          <button
+            onClick={() =>
+              setIndex((prev) => (prev + 1) % announcements.length)
+            }>
+            <HiMiniChevronRight
+              size={16}
+              className="text-slate-500 hover:text-slate-700 transition-colors duration-300"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );

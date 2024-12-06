@@ -9,7 +9,7 @@ export default function ProductCard({ product }: { product: Product }) {
       className="w-full cursor-pointer group">
       <div className="w-100 h-48 relative rounded-md overflow-hidden group-hover:shadow-xl group-hover:-translate-y-1 group-hover:scale-[1.01] transition-all duration-300">
         {product.is_bestseller && (
-          <div className="absolute top-2 left-2 px-2 py-1 text-[10px] font-semibold rounded-sm uppercase bg-white text-slate-700">
+          <div className="absolute z-40 top-2 left-2 px-2 py-1 text-[10px] font-semibold rounded-sm uppercase bg-white text-slate-700">
             Best-seller
           </div>
         )}
@@ -17,10 +17,19 @@ export default function ProductCard({ product }: { product: Product }) {
           <img
             src={product.image_url}
             alt={product.name}
-            className="w-full h-full object-cover shadow-sm"
+            className="w-full h-full object-cover shadow-sm relative z-20"
           />
         ) : (
           <div className="w-full h-full bg-slate-100"></div>
+        )}
+        {product.alt_image_url ? (
+          <img
+            src={product.alt_image_url}
+            alt={product.name}
+            className="w-full h-full object-cover absolute z-30 top-0 left-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
+          />
+        ) : (
+          ""
         )}
       </div>
       <div className="flex flex-col justify-start items-start p-2">

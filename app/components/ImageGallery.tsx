@@ -13,19 +13,20 @@ export default function ImageGallery({ src }: { src: string }) {
   }, []);
 
   return (
-    <div className="w-full h-auto lg:h-[560px] grid grid-cols-6 gap-4">
-      <div className="flex flex-col justify-start items-stretch gap-4 col-span-1">
+    <div className="w-full h-auto lg:h-[560px] grid grid-cols-6 gap-2 md:gap-4">
+      <div className="flex flex-col justify-start items-stretch gap-2 md:gap-4 col-span-1">
         {Array.from({ length: 5 }, (_, index) => (
-          <img
-            src={src}
-            alt=""
-            className={`w-full h-auto object-cover rounded-lg  transition-all duration-300 ${
-              index === mainImageIndex
-                ? "opacity-100 cursor-default"
-                : "opacity-50 cursor-pointer hover:opacity-90"
-            }`}
-            key={index}
-          />
+          <button key={index} onClick={() => setMainImageIndex(index)}>
+            <img
+              src={src}
+              alt=""
+              className={`w-full h-auto object-cover rounded-md transition-all duration-300 ${
+                index === mainImageIndex
+                  ? "opacity-100 cursor-default"
+                  : "opacity-50 cursor-pointer hover:opacity-90"
+              }`}
+            />
+          </button>
         ))}
       </div>
       <div className="w-full h-full overflow-hidden col-span-5 rounded-lg group relative">

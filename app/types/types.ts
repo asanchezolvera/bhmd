@@ -17,9 +17,12 @@ export interface Product {
   slug: string;
   category_id: string;
   description: string;
+  long_description: string;
+  ingredients: string;
   price: number;
   rating: number;
   image_url: string;
+  alt_image_url: string;
   is_bestseller: boolean;
   product_categories: {
     name: string;
@@ -35,4 +38,14 @@ export interface ProductCategory {
 export interface Announcement {
   id: number;
   text: string;
+}
+
+export interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+  content: string;
+  keywords: string[];
 }

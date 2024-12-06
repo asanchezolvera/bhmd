@@ -60,7 +60,7 @@ export default function ProductPage() {
 
               <hr className="my-4 w-full text-slate-200" />
               <OfferSelector price={product.price} />
-              <div className="flex flex-col gap-1 w-full mt-4">
+              <div className="flex flex-col gap-2 w-full mt-4">
                 <Toggle label="Product Details">
                   <div className="w-full p-4 bg-slate-50">
                     <p className="text-sm text-slate-600">
@@ -72,8 +72,7 @@ export default function ProductPage() {
                 <Toggle label="Product Ingredients">
                   <div className="w-full p-4 bg-slate-50">
                     <p className="text-sm text-slate-600">
-                      We ship and return all orders within 7 days. If you have
-                      any questions, please contact us
+                      {product.ingredients}
                     </p>
                   </div>
                 </Toggle>
@@ -88,6 +87,11 @@ export default function ProductPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section>
+        <div className="container">
+          <h2>You might also like:</h2>
         </div>
       </section>
     </main>

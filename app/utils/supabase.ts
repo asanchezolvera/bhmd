@@ -34,6 +34,22 @@ export async function fetchAllProductCategories(): Promise<
   return productCategories || [];
 }
 
+export async function fetchAllProductsWithSameCategory(): Promise<
+  types.Product[]
+> {
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("*, product_categories(name)")
+    .order("product_categories.name")
+    .limit(4);
+
+  if (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+  return products || [];
+}
+
 // Fetch a single product by slug
 export async function fetchProductBySlug(
   slug: string

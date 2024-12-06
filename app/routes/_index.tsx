@@ -45,17 +45,16 @@ export default function Index() {
 
   return (
     <main>
-      <section className="py-16">
+      <section className="py-8">
         <div className="container">
-          <h1>Products</h1>
-          <div className="grid grid-cols-4 grid-auto-rows-min gap-4">
-            <div className="col-span-1 p-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-auto-rows-min gap-4">
+            <div className="col-span-1 p-6">
               <Sidebar
                 categories={productCategories}
                 onFilterChange={handleFilterChange}
               />
             </div>
-            <ul className="col-span-3 grid grid-cols-3 grid-auto-rows-min gap-4">
+            <ul className="col-span-1 md:col-span-2 lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 grid-auto-rows-min gap-x-4 gap-y-6">
               {filteredProducts.map((product: Product) => (
                 <li key={product.id}>
                   <ProductCard key={product.id} product={product} />

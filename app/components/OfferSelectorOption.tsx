@@ -11,10 +11,10 @@ export default function OfferSelectorOption({
   isDefault?: boolean;
   children?: React.ReactNode;
 }) {
-  const discountPrice = (price * 0.8).toFixed(0);
+  const discountPrice = id === "1" ? (price * 0.8).toFixed(0) : null;
 
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <input
         type="radio"
         id={id}
@@ -30,19 +30,18 @@ export default function OfferSelectorOption({
         <div className="w-full flex justify-between items-center">
           <span className="font-semibold text-sm text-slate-700">{label}</span>
           <div className="flex justify-end items-center gap-1">
-            {(id === "1" && (
+            {discountPrice && (
               <span className="text-sm text-slate-700">${discountPrice}</span>
-            )) ||
-              ""}
+            )}
             <span
               className={`text-sm text-slate-700 ${
-                id === "1" ? "line-through text-slate-300" : ""
+                discountPrice ? "line-through text-slate-300" : ""
               }`}>
               ${price}
             </span>
           </div>
         </div>
-        {children}
+        {children && <div>{children}</div>}
       </label>
     </div>
   );

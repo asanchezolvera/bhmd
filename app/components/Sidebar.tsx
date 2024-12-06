@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { Form } from "@remix-run/react";
+import { FiCommand } from "react-icons/fi";
+import { HiMiniChevronDown } from "react-icons/hi2";
 import { ProductCategory } from "~/types/types";
 
 interface SidebarProps {
@@ -7,6 +10,32 @@ interface SidebarProps {
     categories: string[];
     priceRanges: string[];
   }) => void;
+}
+
+export function FilterToggle({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="flex flex-col justify-start items-stretch w-full mb-2">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full p-2 border-b-[1px] text-slate-700 text-sm font-medium border-slate-200 flex justify-between items-center">
+        <h3>{title}</h3>
+        <HiMiniChevronDown
+          size={16}
+          className={` ${
+            isOpen ? "-rotate-180" : ""
+          } transition-transform duration-300`}
+        />
+      </button>
+      {isOpen && <div className="w-full p-4">{children}</div>}
+    </div>
+  );
 }
 
 export default function Sidebar({ categories, onFilterChange }: SidebarProps) {
@@ -56,51 +85,67 @@ export default function Sidebar({ categories, onFilterChange }: SidebarProps) {
   ];
 
   return (
-    <aside className="w-full">
+    <aside className="w-full flex flex-col justify-start items-stretch">
+      <Form method="get" className="w-full mb-4">
+        <label htmlFor="q" className="w-full h-full flex relative">
+          <span className="sr-only">Search</span>
+          <input
+            type="search"
+            name="q"
+            placeholder="Search all products"
+            className="input w-full peer"
+          />
+          <div className="absolute top-0 right-0 flex items-center gap-1 px-4 py-2 text-sm text-slate-300 opacity-100 peer-focus:opacity-0 transition-opacity duration-150">
+            <FiCommand size={14} />
+            <span>K</span>
+          </div>
+        </label>
+      </Form>
       <h2 className="font-serif text-lg font-medium text-blue-900 mb-1">
         Shop by:
       </h2>
-      <h3 className="font-semibold text-sm text-slate-500 mb-2">Categories:</h3>
-      <ul className="flex flex-col gap-2">
-        {categories.map((category) => (
-          <li key={category.id} className="flex items-center">
-            <input
-              type="checkbox"
-              name={category.name}
-              id={category.name}
-              onChange={() => handleCategoryChange(category.name)}
-              checked={selectedCategories.includes(category.name)}
-              className="mr-2"
-            />
-            <label
-              htmlFor={category.name}
-              className="text-sm text-slate-600 cursor-pointer select-none">
-              {category.name}
-            </label>
-          </li>
-        ))}
-      </ul>
-      <hr className="w-5/6 text-slate-300 my-4" />
-      <h3 className="font-semibold text-sm text-slate-500 mb-2">Price:</h3>
-      <ul className="flex flex-col gap-2">
-        {priceRanges.map((range) => (
-          <li key={range.range} className="flex items-center">
-            <input
-              type="checkbox"
-              name={range.range}
-              id={range.range}
-              onChange={() => handlePriceRangeChange(range.range)}
-              checked={selectedPriceRanges.includes(range.range)}
-              className="mr-2"
-            />
-            <label
-              htmlFor={range.range}
-              className="text-sm text-slate-600 cursor-pointer select-none">
-              {range.name}
-            </label>
-          </li>
-        ))}
-      </ul>
+      <FilterToggle title="Categories">
+        <ul className="flex flex-col gap-2">
+          {categories.map((category) => (
+            <li key={category.id} className="flex items-center">
+              <input
+                type="checkbox"
+                name={category.name}
+                id={category.name}
+                onChange={() => handleCategoryChange(category.name)}
+                checked={selectedCategories.includes(category.name)}
+                className="mr-2"
+              />
+              <label
+                htmlFor={category.name}
+                className="text-sm text-slate-600 cursor-pointer select-none">
+                {category.name}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </FilterToggle>
+      <FilterToggle title="Price">
+        <ul className="flex flex-col gap-2">
+          {priceRanges.map((range) => (
+            <li key={range.range} className="flex items-center">
+              <input
+                type="checkbox"
+                name={range.range}
+                id={range.range}
+                onChange={() => handlePriceRangeChange(range.range)}
+                checked={selectedPriceRanges.includes(range.range)}
+                className="mr-2"
+              />
+              <label
+                htmlFor={range.range}
+                className="text-sm text-slate-600 cursor-pointer select-none">
+                {range.name}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </FilterToggle>
     </aside>
   );
 }
