@@ -1,0 +1,36 @@
+<a
+  class="group flex w-full cursor-pointer flex-col"
+  routerLink="/product/{{ product.slug }}"
+>
+  <div
+    class="relative w-full overflow-hidden rounded-md shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl"
+  >
+    <img
+      *ngIf="product?.image_url"
+      [src]="product.image_url"
+      alt="Product Image"
+      class="h-48 w-full object-cover"
+    />
+  </div>
+  <div class="flex flex-col justify-between p-1">
+    <div class="relative h-5 self-start pr-2">
+      <span
+        class="relative z-20 text-[10px] font-semibold uppercase leading-none text-blue-800"
+        >{{ product.category }}</span
+      >
+      <div class="absolute bottom-0 z-10 h-2 w-full bg-rose-50"></div>
+    </div>
+    <h3
+      class="line-clamp-1 text-ellipsis font-serif text-lg font-medium text-blue-900"
+    >
+      {{ product.name }}
+    </h3>
+    <p class="line-clamp-2 text-ellipsis text-sm text-slate-500">
+      {{ product.description }}
+    </p>
+    <p class="text-sm text-blue-800">
+      <span class="font-serif italic">from </span>
+      <span class="font-semibold tracking-wide">${{ product.price }}</span>
+    </p>
+  </div>
+</a>

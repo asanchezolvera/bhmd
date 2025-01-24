@@ -1,0 +1,39 @@
+{
+  "name": "angular-ecommerce",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build"
+  },
+  "dependencies": {
+    "@angular/animations": "^18.1.0",
+    "@angular/common": "^18.1.0",
+    "@angular/compiler": "^18.1.0",
+    "@angular/core": "^18.1.0",
+    "@angular/forms": "^18.1.0",
+    "@angular/platform-browser": "^18.1.0",
+    "@angular/router": "^18.1.0",
+    "@ng-icons/core": "^30.2.0",
+    "@ng-icons/simple-icons": "^30.2.0",
+    "@stripe/stripe-js": "^2.2.0",
+    "@supabase/supabase-js": "^2.39.0",
+    "front-matter": "^4.0.2",
+    "marked": "^11.0.0",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.5.0",
+    "zone.js": "~0.14.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.1.0",
+    "@angular/cli": "^18.1.0",
+    "@angular/compiler-cli": "^18.1.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "postcss": "^8.4.31",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.0.0",
+    "typescript": "~5.5.0"
+  }
+}

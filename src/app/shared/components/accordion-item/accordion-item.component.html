@@ -1,0 +1,22 @@
+<div class="flex w-full flex-col">
+  <!-- Title -->
+  <button
+    class="flex w-full items-center justify-between border-b border-slate-200 px-1 py-2"
+    (click)="isOpen = !isOpen"
+  >
+    <p class="text-sm font-semibold text-slate-600">{{ title }}</p>
+    <div
+      [ngClass]="{ '-rotate-180': isOpen }"
+      class="flex h-8 w-8 items-center justify-center text-slate-500 transition-transform duration-150 hover:text-slate-400 active:text-slate-600"
+    >
+      <app-custom-icon name="chevronDown" size="20"></app-custom-icon>
+    </div>
+  </button>
+  <!-- Content -->
+  <div
+    *ngIf="isOpen"
+    class="flex w-full items-center bg-slate-50 p-4 text-sm text-slate-600"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
