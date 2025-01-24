@@ -1,5 +1,6 @@
 {
   "name": "angular-ecommerce",
+  "type": "module",
   "private": true,
   "scripts": {
     "ng": "ng",
