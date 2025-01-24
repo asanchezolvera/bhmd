@@ -5,10 +5,10 @@ import { LegalContentService } from "@src/app/services/legal-content.service";
 
 @Component({
   selector: "app-legal-page",
-  standalone: true,
   imports: [CommonModule],
   templateUrl: "./legal.component.html",
   providers: [DatePipe],
+  standalone: true,
 })
 export class LegalComponent implements OnInit {
   title: string = "";
@@ -26,11 +26,13 @@ export class LegalComponent implements OnInit {
       if (fileName) {
         this.legalContentService
           .getLegalContent(`assets/content/legal/${fileName}.mdx`)
-          .subscribe((data: { content: string; publishedOn: string; title: string }) => {
-            this.content = data.content;
-            this.publishedOn = data.publishedOn;
-            this.title = data.title;
-          });
+          .subscribe(
+            (data: { content: string; publishedOn: string; title: string }) => {
+              this.content = data.content;
+              this.publishedOn = data.publishedOn;
+              this.title = data.title;
+            },
+          );
       }
     });
   }

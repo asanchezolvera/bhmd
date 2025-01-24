@@ -8,10 +8,10 @@ import { MainLayoutComponent } from "./app/core/layouts/main-layout.component";
 
 @Component({
   selector: "app-root",
-  standalone: true,
   imports: [MainLayoutComponent],
   template: ` <app-main-layout></app-main-layout> `,
   providers: [DatePipe],
+  standalone: true,
 })
 export class App {
   name = "Beverly Hills MD® Cosmeceuticals";

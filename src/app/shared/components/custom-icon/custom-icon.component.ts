@@ -5,9 +5,9 @@ import { CleanSvgPipe } from "@src/app/core/pipes/clean-svg.pipe";
 
 @Component({
   selector: "app-custom-icon",
-  standalone: true,
   imports: [CommonModule],
   templateUrl: "./custom-icon.component.html",
+  standalone: true,
 })
 export class CustomIconComponent implements OnInit {
   @Input() svgString!: string;

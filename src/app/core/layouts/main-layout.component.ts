@@ -6,8 +6,8 @@ import { FooterComponent } from "@shared/components/footer/footer.component";
 
 @Component({
   selector: "app-main-layout",
-  standalone: true,
   imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: "./main-layout.component.html",
+  standalone: true,
 })
 export class MainLayoutComponent {}

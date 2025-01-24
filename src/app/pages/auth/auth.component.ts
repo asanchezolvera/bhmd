@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { SupabaseService } from '../../services/supabase.service';
 
 @Component({
-  selector: 'app-auth',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
+    selector: 'app-auth',
+    imports: [CommonModule, FormsModule],
+    template: `
     <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-sm">
       <h2 class="text-2xl font-bold mb-6">{{ isSignUp ? 'Sign Up' : 'Sign In' }}</h2>
       <form (ngSubmit)="handleSubmit()">

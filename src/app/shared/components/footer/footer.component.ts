@@ -13,7 +13,6 @@ import { DisclaimerComponent } from "@src/app/features/disclaimer/disclaimer.com
 
 @Component({
   selector: "app-footer",
-  standalone: true,
   imports: [CommonModule, RouterLink, NgIcon, DisclaimerComponent],
   providers: [
     provideIcons({
@@ -25,6 +24,7 @@ import { DisclaimerComponent } from "@src/app/features/disclaimer/disclaimer.com
     }),
   ],
   templateUrl: "./footer.component.html",
+  standalone: true,
 })
 export class FooterComponent implements OnInit {
   customerServicesLinks = [

@@ -6,9 +6,9 @@ import { Observable } from "rxjs";
 
 @Component({
   selector: "app-products",
-  standalone: true,
   imports: [CommonModule, ProductCardComponent],
   templateUrl: "./products.component.html",
+  standalone: true,
 })
 export class ProductsComponent implements OnInit {
   products$!: Observable<any>;

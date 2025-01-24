@@ -6,7 +6,6 @@ import { MegaMenuComponent } from "@src/app/features/mega-menu/mega-menu.compone
 
 @Component({
   selector: "app-header",
-  standalone: true,
   imports: [
     CommonModule,
     AuthHeaderComponent,
@@ -14,6 +13,7 @@ import { MegaMenuComponent } from "@src/app/features/mega-menu/mega-menu.compone
     MegaMenuComponent,
   ],
   templateUrl: "./header.component.html",
+  standalone: true,
 })
 export class HeaderComponent {
   isMegaMenuOpen = false;

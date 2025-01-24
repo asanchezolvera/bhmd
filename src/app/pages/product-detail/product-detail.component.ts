@@ -10,9 +10,9 @@ import { AccordionItemComponent } from "@shared/components/accordion-item/accord
 
 @Component({
   selector: "app-product-detail",
-  standalone: true,
   templateUrl: "./product-detail.component.html",
   imports: [CommonModule, AccordionComponent, AccordionItemComponent],
+  standalone: true,
 })
 export class ProductDetailComponent implements OnInit {
   product$!: Observable<Product>;

@@ -3,9 +3,9 @@ import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-home",
-  standalone: true,
   imports: [CommonModule],
   templateUrl: "./home.component.html",
+  standalone: true,
 })
 export class HomeComponent implements OnInit {
   constructor() {}

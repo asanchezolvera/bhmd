@@ -3,8 +3,8 @@ import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "auth-header",
-  standalone: true,
   imports: [CommonModule],
   templateUrl: "./auth-header.component.html",
+  standalone: true,
 })
 export class AuthHeaderComponent {}

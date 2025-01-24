@@ -4,9 +4,9 @@ import { CustomIconComponent } from "@shared/components/custom-icon/custom-icon.
 
 @Component({
   selector: "app-accordion-item",
-  standalone: true,
   templateUrl: "./accordion-item.component.html",
   imports: [CommonModule, CustomIconComponent],
+  standalone: true,
 })
 export class AccordionItemComponent {
   @Input() title!: string;

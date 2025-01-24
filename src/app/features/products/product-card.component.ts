@@ -5,9 +5,9 @@ import { Product } from "../../models/product.type";
 
 @Component({
   selector: "app-product-card",
-  standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: "./product-card.component.html",
+  standalone: true,
 })
 export class ProductCardComponent {
   @Input() product!: Product;
