@@ -1,4 +1,4 @@
-<header class="fixed left-0 right-0 top-0 z-10 w-full shadow-md">
+<header class="fixed left-0 right-0 top-0 z-50 w-full shadow-md">
   <auth-header></auth-header>
   <section class="border-b border-slate-300 bg-white py-4">
     <div class="container">
@@ -47,5 +47,8 @@
       </div>
     </div>
   </section>
-  <app-mega-menu *ngIf="isMegaMenuOpen"></app-mega-menu>
+  <app-mega-menu
+    *ngIf="isMegaMenuOpen"
+    (closeMenu)="closeMegaMenu()"
+  ></app-mega-menu>
 </header>

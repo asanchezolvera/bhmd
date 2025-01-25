@@ -3,7 +3,7 @@
   routerLink="/product/{{ product.slug }}"
 >
   <div
-    class="relative w-full overflow-hidden rounded-md shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl"
+    class="relative z-10 w-full overflow-hidden rounded-md shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl"
   >
     <img
       *ngIf="product?.image_url"
@@ -25,7 +25,7 @@
     >
       {{ product.name }}
     </h3>
-    <p class="line-clamp-2 text-ellipsis text-sm text-slate-500">
+    <p class="mb-1 line-clamp-2 text-ellipsis text-sm text-slate-500">
       {{ product.description }}
     </p>
     <p class="text-sm text-blue-800">

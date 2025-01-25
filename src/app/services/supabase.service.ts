@@ -50,6 +50,17 @@ export class SupabaseService {
     );
   }
 
+  /* Get a product category by its slug */
+  getProductCategoryBySlug(slug: string): Observable<ProductCategory> {
+    return from(
+      this.supabase
+        .from("product_categories")
+        .select("*")
+        .eq("slug", slug)
+        .single(),
+    ).pipe(map((response) => response.data as ProductCategory));
+  }
+
   /* Get all product concerns */
   getProductConcerns(): Observable<ProductConcern[]> {
     return from(this.supabase.from("product_concerns").select("*")).pipe(
@@ -62,5 +73,12 @@ export class SupabaseService {
     return from(
       this.supabase.from("products").select("*").eq("slug", slug).single(),
     ).pipe(map((response) => response.data as Product));
+  }
+
+  /* Get products by category */
+  getProductsByCategory(categoryName: string): Observable<Product[]> {
+    return from(
+      this.supabase.from("products").select("*").eq("category", categoryName),
+    ).pipe(map((response) => response.data as Product[]));
   }
 }

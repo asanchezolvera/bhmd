@@ -1,0 +1,36 @@
+<section class="py-8">
+  <div class="container">
+    <form
+      class="mx-auto w-full max-w-screen-sm"
+      [formGroup]="createAccountForm"
+      (ngSubmit)="submitted = true"
+    >
+      <div class="input-wrapper">
+        <label for="email">Email</label>
+        <div class="relative">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="input"
+            formControlName="email"
+            placeholder="Email address"
+            [ngClass]="{ 'input-error': submitted && email.invalid }"
+          />
+          <div
+            class="absolute bottom-0 right-2 top-0 z-10 flex items-center text-slate-400"
+          >
+            <app-custom-icon name="envelope" size="20"></app-custom-icon>
+          </div>
+        </div>
+        <div
+          *ngIf="submitted && email.invalid"
+          class="text-xs font-medium text-red-500"
+        >
+          Please enter a valid email address.
+        </div>
+      </div>
+    </form>
+    <p>Already have an account? <a routerLink="/">Sign in</a></p>
+  </div>
+</section>

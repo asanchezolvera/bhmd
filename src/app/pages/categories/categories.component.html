@@ -1,0 +1,22 @@
+<section class="py-8">
+  <div class="container">
+    <div *ngIf="category$ | async as category">
+      <h1 class="font-serif text-3xl font-medium text-blue-900">
+        {{ category.name }}
+      </h1>
+      <p class="text-slate-600">{{ category.description }}</p>
+    </div>
+  </div>
+</section>
+<section class="py-8">
+  <div class="container">
+    <div
+      *ngIf="products$ | async as products"
+      class="grid auto-rows-min grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      <div *ngFor="let product of products">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    </div>
+  </div>
+</section>
