@@ -1,15 +1,35 @@
 import { Routes } from "@angular/router";
+import { MainLayoutComponent } from "@layouts/main/main-layout.component";
+import { AuthLayoutComponent } from "@layouts/auth/auth-layout.component";
+import { HomeComponent } from "@pages/home/home.component";
+import { BlogComponent } from "@pages/blog/blog.component";
+import { CategoriesComponent } from "@pages/categories/categories.component";
+import { LegalComponent } from "@pages/legal/legal.component";
+import { ProductsComponent } from "@pages/products/products.component";
+import { ProductDetailComponent } from "@pages/product-detail/product-detail.component";
+import { CreateAccountComponent } from "@pages/auth/create-account/create-account.component";
+import { LoginComponent } from "@pages/auth/login/login.component";
 
 export const routes: Routes = [
   {
     path: "",
-    loadComponent: () =>
-      import("./pages/home/home.component").then((m) => m.HomeComponent),
+    component: MainLayoutComponent,
+    children: [
+      { path: "", component: HomeComponent },
+      { path: "blog", component: BlogComponent },
+      { path: "category/:slug", component: CategoriesComponent },
+      { path: "legal/:fileName", component: LegalComponent },
+      { path: "products", component: ProductsComponent },
+      { path: "product/:slug", component: ProductDetailComponent },
+    ],
   },
   {
-    path: "auth",
-    loadComponent: () =>
-      import("./pages/auth/auth.component").then((m) => m.AuthComponent),
+    path: "",
+    component: AuthLayoutComponent,
+    children: [
+      { path: "create-account", component: CreateAccountComponent },
+      { path: "login", component: LoginComponent },
+    ],
   },
   {
     path: "create-account",
@@ -17,36 +37,5 @@ export const routes: Routes = [
       import("./pages/auth/create-account/create-account.component").then(
         (m) => m.CreateAccountComponent,
       ),
-  },
-  {
-    path: "blog",
-    loadComponent: () =>
-      import("./pages/blog/blog.component").then((m) => m.BlogComponent),
-  },
-  {
-    path: "products",
-    loadComponent: () =>
-      import("./pages/products/products.component").then(
-        (m) => m.ProductsComponent,
-      ),
-  },
-  {
-    path: "product/:slug",
-    loadComponent: () =>
-      import("./pages/product-detail/product-detail.component").then(
-        (m) => m.ProductDetailComponent,
-      ),
-  },
-  {
-    path: "category/:slug",
-    loadComponent: () =>
-      import("./pages/categories/categories.component").then(
-        (m) => m.CategoriesComponent,
-      ),
-  },
-  {
-    path: "legal/:fileName",
-    loadComponent: () =>
-      import("./pages/legal/legal.component").then((m) => m.LegalComponent),
   },
 ];

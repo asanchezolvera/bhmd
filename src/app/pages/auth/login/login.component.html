@@ -1,4 +1,5 @@
 <div class="grid min-h-screen w-full grid-cols-2 grid-rows-1">
+  <section class="col-span-1 w-full bg-slate-100"></section>
   <section
     class="col-span-1 flex h-full w-full flex-col items-center justify-between p-4">
     <!-- Header -->
@@ -12,29 +13,18 @@
       class="flex h-full w-full max-w-[560px] flex-col items-stretch justify-center">
       <div class="mx-auto mb-4 w-full">
         <h1 class="text-center font-serif text-3xl font-medium text-blue-900">
-          Create Account
+          Log In
         </h1>
         <p class="text-center text-slate-600">
           Create a free Luxe Loyalty account to gain access to exclusive
           discounts and start earning rewards toward future purchases.
         </p>
       </div>
-      <app-create-account-form></app-create-account-form>
-      <div class="flex flex-col gap-4">
-        <p class="text-center text-xs text-slate-500">
-          Already have an account?
-          <a routerLink="/login" class="text-link">Sign in</a>
-        </p>
-        <div
-          class="w-full rounded-sm border border-blue-600 bg-blue-50 p-2 text-center text-xs text-blue-600">
-          <p>
-            By clicking Create Account, you agree to our
-            <a href="/legal/terms-of-use" class="text-link">Terms of Use</a> and
-            <a href="/legal/privacy-policy" class="text-link">Privacy Policy</a
-            >.
-          </p>
-        </div>
-      </div>
+      <app-login-form></app-login-form>
+      <p class="text-center text-xs text-slate-500">
+        Don't have an account yet?
+        <a routerLink="/create-account" class="text-link">Sign up</a>
+      </p>
     </div>
     <!-- Footer -->
     <footer class="flex w-full items-center justify-between p-2">
@@ -56,5 +46,4 @@
       </div>
     </footer>
   </section>
-  <section class="col-span-1 w-full bg-slate-100"></section>
 </div>

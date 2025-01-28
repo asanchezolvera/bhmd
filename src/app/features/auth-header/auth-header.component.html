@@ -1,17 +1,17 @@
 <section class="hidden border-b border-slate-100 bg-slate-50 py-2 lg:block">
   <div class="container">
+    <!-- Nav Left-->
     <div class="flex w-full items-center justify-between">
-      <div class="flex items-center gap-1">
-        <span class="text-xs text-slate-600">Tel:</span>
-        <a href="tel:18008520477" class="text-xs text-slate-600"
-          >1-800-852-0477</a
-        >
-      </div>
+      <app-slider
+        class="h-6 w-1/2 text-xs text-slate-600"
+        [slides]="SLIDES"
+        [autoPlay]="true"
+        [autoPlayInterval]="5000"></app-slider>
       <!-- Nav Right -->
       <div class="flex items-center justify-end gap-4">
-        <a href="/" class="text-xs text-slate-600">Log In</a>
+        <a href="/login" class="text-xs text-slate-600">Log In</a>
         <div class="h-4 w-[1px] bg-slate-300"></div>
-        <a href="/" class="text-xs text-slate-600">Sign Up</a>
+        <a href="/create-account" class="text-xs text-slate-600">Sign Up</a>
       </div>
     </div>
   </div>

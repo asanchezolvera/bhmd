@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { SupabaseService } from "@src/app/services/supabase.service";
-import { ProductCardComponent } from "@src/app/features/products/product-card.component";
+import { ProductCardComponent } from "@src/app/features/product-card/product-card.component";
 import { Product } from "@src/app/models/product.type";
 import { ProductCategory } from "@src/app/models/productCategory.type";
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { SupabaseService } from "../../services/supabase.service";
-import { ProductCardComponent } from "@features/products/product-card.component";
+import { ProductCardComponent } from "@src/app/features/product-card/product-card.component";
 import { Observable } from "rxjs";
 
 @Component({
