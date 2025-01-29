@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { Product } from "@models/product.type";
+import { ProductCategory } from "@models/productCategory.type";
 import { SupabaseService } from "@services/supabase.service";
+import { CategoriesService } from "@src/app/services/categories.service";
 import { ProductGalleryComponent } from "@src/app/features/product-gallery/product.gallery.component";
 import { AccordionComponent } from "@shared/components/accordion/accordion.component";
 import { AccordionItemComponent } from "@shared/components/accordion-item/accordion-item.component";
@@ -14,6 +16,7 @@ import { AccordionItemComponent } from "@shared/components/accordion-item/accord
   templateUrl: "./product-detail.component.html",
   imports: [
     CommonModule,
+    RouterLink,
     ProductGalleryComponent,
     AccordionComponent,
     AccordionItemComponent,
@@ -22,6 +25,7 @@ import { AccordionItemComponent } from "@shared/components/accordion-item/accord
 })
 export class ProductDetailComponent implements OnInit {
   product$!: Observable<Product>;
+  category$!: Observable<ProductCategory>;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +40,15 @@ export class ProductDetailComponent implements OnInit {
           throw new Error("Product slug is required.");
         }
         return this.supabaseService.getProductBySlug(slug);
+      }),
+    );
+    this.category$ = this.route.params.pipe(
+      switchMap((params) => {
+        const slug = params["category"];
+        if (!slug) {
+          throw new Error("Category slug is required.");
+        }
+        return this.supabaseService.getProductCategoryBySlug(slug);
       }),
     );
   }

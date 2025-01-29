@@ -1,8 +1,35 @@
-<section *ngIf="product$ | async as product" class="py-16">
+<section *ngIf="product$ | async as product" class="py-4">
+  <div class="container">
+    <div class="flex w-full gap-1">
+      <a
+        routerLink="/products"
+        class="text-sm text-slate-300 transition-colors duration-300 hover:text-slate-400 active:text-slate-500"
+        >Products</a
+      >
+      <span class="mx-2 text-slate-300">/</span>
+      <a
+        *ngIf="category$ | async as category"
+        routerLink="/category/{{ category.slug }}"
+        class="text-sm text-slate-300 transition-colors duration-300 hover:text-slate-400 active:text-slate-500">
+        {{ category.name }}
+      </a>
+      <span class="mx-2 text-slate-300">/</span>
+      <a routerLink="#" class="text-sm text-slate-500">{{ product.name }}</a>
+    </div>
+  </div>
+</section>
+<section *ngIf="product$ | async as product" class="pb-16 pt-4">
   <div class="container">
     <div class="grid grid-cols-1 grid-rows-1 gap-4 lg:grid-cols-2">
       <app-product-gallery></app-product-gallery>
       <div class="col-span-1 flex flex-col gap-1 p-4">
+        <div class="relative h-5 self-start pr-2">
+          <span
+            class="relative z-20 text-xs font-semibold uppercase leading-none text-blue-800"
+            >{{ product.category }}</span
+          >
+          <div class="absolute bottom-0 z-10 h-2 w-full bg-rose-50"></div>
+        </div>
         <h1 class="font-serif text-3xl text-blue-900">
           {{ product?.name }}
         </h1>
