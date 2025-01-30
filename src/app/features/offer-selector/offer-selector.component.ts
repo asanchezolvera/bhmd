@@ -1,13 +1,15 @@
 import { Component, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterLink } from "@angular/router";
 import { Product } from "../../models/product.type";
+
 @Component({
-  selector: "app-product-card",
-  imports: [CommonModule, RouterLink],
-  templateUrl: "./product-card.component.html",
+  selector: "app-offer-selector",
+  templateUrl: "./offer-selector.component.html",
+  imports: [CommonModule],
   standalone: true,
 })
-export class ProductCardComponent {
+export class OfferSelectorComponent {
   @Input() product!: Product;
+
+  constructor() {}
 }

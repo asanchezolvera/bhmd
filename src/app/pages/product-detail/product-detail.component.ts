@@ -8,6 +8,7 @@ import { ProductCategory } from "@models/productCategory.type";
 import { SupabaseService } from "@services/supabase.service";
 import { CategoriesService } from "@src/app/services/categories.service";
 import { ProductGalleryComponent } from "@src/app/features/product-gallery/product.gallery.component";
+import { OfferSelectorComponent } from "@src/app/features/offer-selector/offer-selector.component";
 import { AccordionComponent } from "@shared/components/accordion/accordion.component";
 import { AccordionItemComponent } from "@shared/components/accordion-item/accordion-item.component";
 
@@ -18,6 +19,7 @@ import { AccordionItemComponent } from "@shared/components/accordion-item/accord
     CommonModule,
     RouterLink,
     ProductGalleryComponent,
+    OfferSelectorComponent,
     AccordionComponent,
     AccordionItemComponent,
   ],

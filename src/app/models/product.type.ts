@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   slug: string;
   description: string;
+  long_description: string;
   price: number;
   image_url?: string;
   is_bestseller: boolean;
