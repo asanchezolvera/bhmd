@@ -46,28 +46,64 @@ input[type="search"] {
   @apply text-blue-600 decoration-rose-200 decoration-dotted underline-offset-4 transition-colors duration-300 hover:text-blue-500 active:text-blue-700;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+/* Animations */
 
 .fade-in {
   animation: fadeIn 0.1s ease-in-out;
 }
 
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
+.fade-out {
+  animation: fadeOut 0.1s ease-in-out;
 }
 
 .slide-down {
   animation: slideDown 0.15s ease-in-out;
+}
+
+.slide-left {
+  animation: slideLeft 0.15s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+  to {
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+    visibility: hidden;
+  }
+  to {
+    transform: translateX(0);
+    visibility: visible;
+  }
 }

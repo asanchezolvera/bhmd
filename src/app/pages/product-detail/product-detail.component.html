@@ -33,8 +33,13 @@
         <h1 class="font-serif text-3xl text-blue-900">
           {{ product?.name }}
         </h1>
-        <p class="text-slate-700">{{ product?.long_description }}</p>
+        <p class="mb-4 line-clamp-3 overflow-ellipsis text-slate-600">
+          {{ product?.long_description }}
+        </p>
         <app-offer-selector [product]="product"></app-offer-selector>
+        <button class="btn mt-4" (click)="cart.addProductToCart(product)">
+          <span class="text-base font-medium text-white">Add to Cart</span>
+        </button>
         <app-accordion>
           <app-accordion-item title="Product Details">
             <p>Product Details</p>

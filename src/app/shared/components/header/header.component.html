@@ -19,8 +19,7 @@
             <button
               id="shop"
               class="nav-dropdown-link"
-              (click)="toggleMegaMenu()"
-            >
+              (click)="toggleMegaMenu()">
               <span>Shop</span>
               <app-custom-icon name="chevronDown" size="20"></app-custom-icon>
             </button>
@@ -40,8 +39,13 @@
           <button class="h-6 w-6">
             <app-custom-icon name="search" size="24"></app-custom-icon>
           </button>
-          <button class="h-6 w-6">
+          <button class="relative h-6 w-6" (click)="toggleCartDrawer()">
             <app-custom-icon name="shoppingBag" size="24"></app-custom-icon>
+            <div
+              *ngIf="cart.cart().length > 0"
+              class="absolute -right-1 -top-1">
+              <div class="h-2 w-2 rounded-full bg-rose-400"></div>
+            </div>
           </button>
         </nav>
       </div>
@@ -49,6 +53,8 @@
   </section>
   <app-mega-menu
     *ngIf="isMegaMenuOpen"
-    (closeMenu)="closeMegaMenu()"
-  ></app-mega-menu>
+    (closeMenu)="closeMegaMenu()"></app-mega-menu>
+  <app-cart-drawer
+    *ngIf="isCartDrawerOpen"
+    (closeMenu)="closeCartDrawer()"></app-cart-drawer>
 </header>

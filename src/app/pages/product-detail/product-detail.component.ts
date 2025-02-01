@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { Observable } from "rxjs";
@@ -7,6 +7,7 @@ import { Product } from "@models/product.type";
 import { ProductCategory } from "@models/productCategory.type";
 import { SupabaseService } from "@services/supabase.service";
 import { CategoriesService } from "@src/app/services/categories.service";
+import { CartService } from "@src/app/services/cart.service";
 import { ProductGalleryComponent } from "@src/app/features/product-gallery/product.gallery.component";
 import { OfferSelectorComponent } from "@src/app/features/offer-selector/offer-selector.component";
 import { AccordionComponent } from "@shared/components/accordion/accordion.component";
@@ -26,6 +27,7 @@ import { AccordionItemComponent } from "@shared/components/accordion-item/accord
   standalone: true,
 })
 export class ProductDetailComponent implements OnInit {
+  cart = inject(CartService);
   product$!: Observable<Product>;
   category$!: Observable<ProductCategory>;
 

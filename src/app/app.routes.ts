@@ -31,11 +31,4 @@ export const routes: Routes = [
       { path: "login", component: LoginComponent },
     ],
   },
-  {
-    path: "create-account",
-    loadComponent: () =>
-      import("./pages/auth/create-account/create-account.component").then(
-        (m) => m.CreateAccountComponent,
-      ),
-  },
 ];

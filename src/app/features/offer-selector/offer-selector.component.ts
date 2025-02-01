@@ -10,6 +10,11 @@ import { Product } from "../../models/product.type";
 })
 export class OfferSelectorComponent {
   @Input() product!: Product;
+  selectedOffer: "otp" | "sub" = "otp";
+
+  selectOffer(offer: "otp" | "sub") {
+    this.selectedOffer = offer;
+  }
 
   constructor() {}
 }
