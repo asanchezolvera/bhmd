@@ -17,7 +17,7 @@ export const routes: Routes = [
     children: [
       { path: "", component: HomeComponent },
       { path: "blog", component: BlogComponent },
-      { path: "category/:slug", component: CategoriesComponent },
+      { path: "products/category/:slug", component: CategoriesComponent },
       { path: "legal/:fileName", component: LegalComponent },
       { path: "products", component: ProductsComponent },
       { path: "product/:slug", component: ProductDetailComponent },

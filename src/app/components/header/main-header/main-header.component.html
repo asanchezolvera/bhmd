@@ -1,0 +1,63 @@
+<header class="fixed left-0 right-0 top-0 z-50 w-full shadow-md">
+  <app-top-header></app-top-header>
+  <section class="border-b border-slate-300 bg-white py-4">
+    <div class="container">
+      <div class="flex w-full items-center justify-between">
+        <!-- Hamburger Menu -->
+        <button class="h-6 w-6 lg:hidden">
+          <app-custom-icon name="hamburger" size="24"></app-custom-icon>
+        </button>
+        <!-- Nav Left -->
+        <div class="hidden items-center gap-4 lg:flex">
+          <!-- Main Logo -->
+          <a href="/">
+            <img src="/images/bhmd-logo.webp" alt="Logo" class="h-8 w-auto" />
+          </a>
+          <div class="h-4 w-[1px] bg-slate-300"></div>
+          <!-- Main Menu -->
+          <nav class="flex gap-4">
+            <button
+              id="shop"
+              class="nav-dropdown-link"
+              (click)="toggleMegaMenu()">
+              <span>Shop</span>
+              <app-custom-icon name="chevronDown" size="20"></app-custom-icon>
+            </button>
+            <button id="Learn" class="nav-dropdown-link">
+              <span>Learn</span>
+              <app-custom-icon name="chevronDown" size="20"></app-custom-icon>
+            </button>
+            <a href="/luxe-loyalty" class="nav-link">Earn Rewards</a>
+          </nav>
+        </div>
+        <!-- Nav Center -->
+        <a href="/" class="lg:hidden">
+          <img src="/images/bhmd-small-logo.webp" alt="Logo" class="h-7 w-7" />
+        </a>
+        <!-- Nav Right -->
+        <nav class="flex items-center justify-end gap-4">
+          <a href="/login" class="btn shadow-md">
+            <span>Take the Quiz</span>
+          </a>
+          <button class="h-6 w-6">
+            <app-custom-icon name="search" size="24"></app-custom-icon>
+          </button>
+          <button class="relative h-6 w-6" (click)="toggleCartDrawer()">
+            <app-custom-icon name="shoppingBag" size="24"></app-custom-icon>
+            <div
+              *ngIf="cart.cart().length > 0"
+              class="absolute -right-1 -top-1">
+              <div class="h-2 w-2 rounded-full bg-rose-400"></div>
+            </div>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <app-shop-mega-menu
+    *ngIf="isMegaMenuOpen"
+    (closeMenu)="closeMegaMenu()"></app-shop-mega-menu>
+  <app-cart-drawer
+    *ngIf="isCartDrawerOpen"
+    (closeMenu)="closeCartDrawer()"></app-cart-drawer>
+</header>

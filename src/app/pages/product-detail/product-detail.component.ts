@@ -1,17 +1,14 @@
-import { Component, OnInit, inject } from "@angular/core";
+import { Component, OnInit, inject, signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ActivatedRoute, RouterLink } from "@angular/router";
-import { Observable } from "rxjs";
-import { switchMap } from "rxjs/operators";
 import { Product } from "@models/product.type";
 import { ProductCategory } from "@models/productCategory.type";
 import { SupabaseService } from "@services/supabase.service";
-import { CategoriesService } from "@src/app/services/categories.service";
-import { CartService } from "@src/app/services/cart.service";
-import { ProductGalleryComponent } from "@src/app/features/product-gallery/product.gallery.component";
-import { OfferSelectorComponent } from "@src/app/features/offer-selector/offer-selector.component";
-import { AccordionComponent } from "@shared/components/accordion/accordion.component";
-import { AccordionItemComponent } from "@shared/components/accordion-item/accordion-item.component";
+import { CartService } from "@services/cart.service";
+import { ProductImageGalleryComponent } from "@components/product-image-gallery/product-image-gallery.component";
+import { OfferSelectorComponent } from "@components/offer-selector/offer-selector.component";
+import { AccordionComponent } from "@components/accordion/accordion.component";
+import { AccordionItemComponent } from "@components/accordion-item/accordion-item.component";
 
 @Component({
   selector: "app-product-detail",
@@ -19,7 +16,7 @@ import { AccordionItemComponent } from "@shared/components/accordion-item/accord
   imports: [
     CommonModule,
     RouterLink,
-    ProductGalleryComponent,
+    ProductImageGalleryComponent,
     OfferSelectorComponent,
     AccordionComponent,
     AccordionItemComponent,
@@ -28,32 +25,25 @@ import { AccordionItemComponent } from "@shared/components/accordion-item/accord
 })
 export class ProductDetailComponent implements OnInit {
   cart = inject(CartService);
-  product$!: Observable<Product>;
-  category$!: Observable<ProductCategory>;
+  product = signal<Product | null>(null);
+  category = signal<ProductCategory | null>(null);
 
   constructor(
     private route: ActivatedRoute,
     private supabaseService: SupabaseService,
   ) {}
 
-  ngOnInit() {
-    this.product$ = this.route.params.pipe(
-      switchMap((params) => {
-        const slug = params["slug"];
-        if (!slug) {
-          throw new Error("Product slug is required.");
-        }
-        return this.supabaseService.getProductBySlug(slug);
-      }),
+  async ngOnInit() {
+    const slug = this.route.snapshot.params["slug"];
+    if (!slug) {
+      throw new Error("Product slug is required.");
+    }
+    const product = await this.supabaseService.getProductBySlug(slug);
+    this.product.set(product);
+
+    const category = await this.supabaseService.getProductCategoryByName(
+      product.category,
     );
-    this.category$ = this.route.params.pipe(
-      switchMap((params) => {
-        const slug = params["category"];
-        if (!slug) {
-          throw new Error("Category slug is required.");
-        }
-        return this.supabaseService.getProductCategoryBySlug(slug);
-      }),
-    );
+    this.category.set(category);
   }
 }

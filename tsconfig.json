@@ -23,16 +23,17 @@
     "paths": {
       "@src/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
+      "@components/*": ["./src/app/components/*"],
       "@content/*": ["./src/app/content/*"],
       "@core/*": ["./src/app/core/*"],
       "@features/*": ["./src/app/features/*"],
       "@guards/*": ["./src/app/core/guards/*"],
       "@layouts/*": ["./src/app/core/layouts/*"],
+      "@models/*": ["src/app/models/*"],
       "@pages/*": ["./src/app/pages/*"],
       "@public/*": ["./src/app/public/*"],
       "@services/*": ["./src/app/services/*"],
-      "@shared/*": ["./src/app/shared/*"],
-      "@models/*": ["src/app/models/*"]
+      "@shared/*": ["./src/app/shared/*"]
     }
   },
   "exclude": ["**/*.mdx"],

@@ -1,12 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs";
-import { switchMap } from "rxjs/operators";
-import { SupabaseService } from "@src/app/services/supabase.service";
-import { ProductCardComponent } from "@src/app/features/product-card/product-card.component";
-import { Product } from "@src/app/models/product.type";
-import { ProductCategory } from "@src/app/models/productCategory.type";
+import { SupabaseService } from "@services/supabase.service";
+import { ProductCardComponent } from "@components/products/product-card/product-card.component";
+import { Product } from "@models/product.type";
+import { ProductCategory } from "@models/productCategory.type";
 
 @Component({
   selector: "app-categories",
@@ -15,28 +13,23 @@ import { ProductCategory } from "@src/app/models/productCategory.type";
   standalone: true,
 })
 export class CategoriesComponent implements OnInit {
-  category$!: Observable<ProductCategory>;
-  products$!: Observable<Product[]>;
+  category = signal<ProductCategory | null>(null);
+  products = signal<Product[]>([]);
 
   constructor(
     private route: ActivatedRoute,
     private supabase: SupabaseService,
   ) {}
 
-  ngOnInit() {
-    this.category$ = this.route.params.pipe(
-      switchMap((params) => {
-        const slug = params["slug"];
-        if (!slug) {
-          throw new Error("Category slug is required.");
-        }
-        return this.supabase.getProductCategoryBySlug(slug);
-      }),
-    );
-    this.products$ = this.category$.pipe(
-      switchMap((category) => {
-        return this.supabase.getProductsByCategory(category.name);
-      }),
-    );
+  async ngOnInit() {
+    const slug = this.route.snapshot.params["slug"];
+    if (!slug) {
+      throw new Error("Category slug is required.");
+    }
+    const category = await this.supabase.getProductCategoryBySlug(slug);
+    this.category.set(category);
+
+    const products = await this.supabase.getProductsByCategory(category.name);
+    this.products.set(products);
   }
 }

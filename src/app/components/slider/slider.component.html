@@ -1,0 +1,28 @@
+<div class="relative flex flex-col overflow-hidden">
+  <!-- Slides -->
+  <div class="flex h-6 w-full transition-transform duration-300">
+    <div
+      *ngFor="let slide of slides; let i = index"
+      class="slide-left min-w-full"
+      [ngClass]="currentSlideIndex === i ? 'block' : 'hidden'">
+      <img *ngIf="slide.image" [src]="slide.image" [alt]="slide.alt" />
+      <div
+        *ngIf="slide.content"
+        class="absolute inset-0 flex w-full items-center">
+        {{ slide.content }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button class="arrow prev hidden" (click)="prevSlide()">&#10094;</button>
+  <button class="arrow next hidden" (click)="nextSlide()">&#10095;</button>
+
+  <!-- Pagination Dots -->
+  <div class="pagination hidden">
+    <button
+      *ngFor="let slide of slides; let i = index"
+      [ngClass]="{ active: currentSlideIndex === i }"
+      (click)="goToSlide(i)"></button>
+  </div>
+</div>
