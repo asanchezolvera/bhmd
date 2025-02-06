@@ -19,13 +19,28 @@
             <button
               id="shop"
               class="nav-dropdown-link"
+              [ngClass]="{
+                'text-blue-600': isMegaMenuOpen,
+                'text-slate-600': !isMegaMenuOpen,
+              }"
               (click)="toggleMegaMenu()">
               <span>Shop</span>
-              <app-custom-icon name="chevronDown" size="20"></app-custom-icon>
+              <div
+                class="transition-transform duration-150"
+                [ngClass]="{ '-rotate-180': isMegaMenuOpen }">
+                <app-custom-icon
+                  name="chevronDown"
+                  size="20"
+                  [ngClass]="{
+                    'text-blue-600': isMegaMenuOpen,
+                  }"></app-custom-icon>
+              </div>
             </button>
             <button id="Learn" class="nav-dropdown-link">
               <span>Learn</span>
-              <app-custom-icon name="chevronDown" size="20"></app-custom-icon>
+              <div>
+                <app-custom-icon name="chevronDown" size="20"></app-custom-icon>
+              </div>
             </button>
             <a href="/luxe-loyalty" class="nav-link">Earn Rewards</a>
           </nav>
@@ -36,9 +51,6 @@
         </a>
         <!-- Nav Right -->
         <nav class="flex items-center justify-end gap-4">
-          <a href="/login" class="btn shadow-md">
-            <span>Take the Quiz</span>
-          </a>
           <button class="h-6 w-6">
             <app-custom-icon name="search" size="24"></app-custom-icon>
           </button>

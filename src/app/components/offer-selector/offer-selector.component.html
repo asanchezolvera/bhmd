@@ -1,5 +1,25 @@
 <div class="flex w-full flex-col items-stretch gap-2">
-  <!-- One-Time Purchase -->
-  <app-offer-selector-item label="One-Time Purchase"></app-offer-selector-item>
-  <app-offer-selector-item label="Subscribe + Save"></app-offer-selector-item>
+  <app-offer-selector-item
+    label="One-Time Purchase"
+    [price]="price"
+    [isSelected]="selectedOffer() === 'one-time'"
+    (select)="selectedOffer.set('one-time')"
+    [description]="
+      'Or save 20% with a free Luxe Loyalty account.'
+    "></app-offer-selector-item>
+  <app-offer-selector-item
+    label="Subscribe + Save"
+    [price]="price * 0.9"
+    [isSelected]="selectedOffer() === 'subscribe'"
+    (select)="selectedOffer.set('subscribe')"
+    [description]="
+      'And receive this product every 30 days, automatically.'
+    "></app-offer-selector-item>
+  <div class="flex w-full items-stretch gap-4">
+    <app-quantity-selector></app-quantity-selector>
+    <button
+      class="btn flex h-full items-center justify-center gap-1 px-4 py-3 shadow-xl">
+      <span class="font-semibold leading-none text-white">Add to Cart</span>
+    </button>
+  </div>
 </div>

@@ -4,16 +4,16 @@ import { ActivatedRoute } from "@angular/router";
 import { SupabaseService } from "@services/supabase.service";
 import { ProductCardComponent } from "@components/products/product-card/product-card.component";
 import { Product } from "@models/product.type";
-import { ProductCategory } from "@models/productCategory.type";
+import { ProductConcern } from "@models/productConcern.type";
 
 @Component({
-  selector: "app-categories",
+  selector: "app-concerns",
   imports: [CommonModule, ProductCardComponent],
-  templateUrl: "./categories.component.html",
+  templateUrl: "./concerns.component.html",
   standalone: true,
 })
-export class CategoriesComponent implements OnInit {
-  category = signal<ProductCategory | null>(null);
+export class ConcernsComponent implements OnInit {
+  concern = signal<ProductConcern | null>(null);
   products = signal<Product[]>([]);
 
   constructor(
@@ -22,18 +22,18 @@ export class CategoriesComponent implements OnInit {
   ) {
     this.route.params.subscribe((params) => {
       if (params["slug"]) {
-        this.loadCategoryData(params["slug"]);
+        this.loadConcernData(params["slug"]);
       }
     });
   }
 
-  async loadCategoryData(slug: string) {
-    const category = await this.supabase.getProductCategoryBySlug(slug);
-    this.category.set(category);
+  async loadConcernData(slug: string) {
+    const concern = await this.supabase.getProductConcernBySlug(slug);
+    this.concern.set(concern);
 
-    const products = await this.supabase.getProductsByCategory(category.name);
+    const products = await this.supabase.getProductsByConcern(concern.name);
     this.products.set(products);
   }
 
-  ngOnInit() {}
+  async ngOnInit() {}
 }

@@ -9,6 +9,7 @@ import { ProductImageGalleryComponent } from "@components/product-image-gallery/
 import { OfferSelectorComponent } from "@components/offer-selector/offer-selector.component";
 import { AccordionComponent } from "@components/accordion/accordion.component";
 import { AccordionItemComponent } from "@components/accordion-item/accordion-item.component";
+import { CustomIconComponent } from "@components/icon/custom-icon.component";
 
 @Component({
   selector: "app-product-detail",
@@ -20,6 +21,7 @@ import { AccordionItemComponent } from "@components/accordion-item/accordion-ite
     OfferSelectorComponent,
     AccordionComponent,
     AccordionItemComponent,
+    CustomIconComponent,
   ],
   standalone: true,
 })

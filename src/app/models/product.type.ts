@@ -9,4 +9,6 @@ export interface Product {
   is_bestseller: boolean;
   ingredients: string;
   category: string;
+  size?: number;
+  weight?: number;
 }

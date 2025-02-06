@@ -97,6 +97,17 @@ export class SupabaseService {
     return data;
   }
 
+  /* Get a product concern by its slug */
+  async getProductConcernBySlug(slug: string): Promise<ProductConcern> {
+    const { data, error } = await this.supabase
+      .from("product_concerns")
+      .select("*")
+      .eq("slug", slug)
+      .single();
+    if (error) throw error;
+    return data;
+  }
+
   /* Get a product by its slug */
   async getProductBySlug(slug: string): Promise<Product> {
     const { data, error } = await this.supabase
@@ -118,10 +129,31 @@ export class SupabaseService {
     return data;
   }
 
+  /* Get products by concern */
+  async getProductsByConcern(concernName: string): Promise<Product[]> {
+    const { data, error } = await this.supabase
+      .from("products")
+      .select("*")
+      .eq("concern", concernName);
+    if (error) throw error;
+    return data;
+  }
+
   /* Get product category by name */
   async getProductCategoryByName(name: string): Promise<ProductCategory> {
     const { data, error } = await this.supabase
       .from("product_categories")
+      .select("*")
+      .eq("name", name)
+      .single();
+    if (error) throw error;
+    return data;
+  }
+
+  /* Get product concern by name */
+  async getProductConcernByName(name: string): Promise<ProductConcern> {
+    const { data, error } = await this.supabase
+      .from("product_concerns")
       .select("*")
       .eq("name", name)
       .single();

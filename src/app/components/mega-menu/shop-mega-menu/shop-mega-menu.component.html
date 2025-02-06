@@ -32,7 +32,9 @@
               @for (concern of concernsService.concerns(); track concern.id) {
                 <li
                   class="text-sm text-slate-600 transition-all duration-300 hover:translate-x-1 hover:text-slate-500 active:text-slate-700">
-                  <a [href]="concern.slug">{{ concern.name }}</a>
+                  <a [routerLink]="['/products/concern', concern.slug]">{{
+                    concern.name
+                  }}</a>
                 </li>
               }
               <li
