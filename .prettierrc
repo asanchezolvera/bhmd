@@ -1,4 +1,7 @@
 {
   "bracketSameLine": true,
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "formatOnSave": true,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "printWidth": 80,
+  "proseWrap": "always"
 }

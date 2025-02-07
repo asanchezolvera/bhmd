@@ -1,0 +1,22 @@
+<section class="py-8">
+  <div class="container">
+    @if (concern(); as concern) {
+      <div>
+        <h1 class="font-serif text-3xl font-medium text-blue-900">
+          {{ concern.name }}
+        </h1>
+        <p class="text-slate-600">{{ concern.description }}</p>
+      </div>
+    }
+  </div>
+</section>
+<section class="py-8">
+  <div class="container">
+    <div
+      class="grid auto-rows-min grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      @for (product of products(); track product.id) {
+        <app-product-card [product]="product"></app-product-card>
+      }
+    </div>
+  </div>
+</section>

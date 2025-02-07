@@ -1,57 +1,73 @@
-<section *ngIf="product$ | async as product" class="py-4">
-  <div class="container">
-    <div class="flex w-full gap-1">
-      <a
-        routerLink="/products"
-        class="text-sm text-slate-300 transition-colors duration-300 hover:text-slate-400 active:text-slate-500"
-        >Products</a
-      >
-      <span class="mx-2 text-slate-300">/</span>
-      <a
-        *ngIf="category$ | async as category"
-        routerLink="/category/{{ category.slug }}"
-        class="text-sm text-slate-300 transition-colors duration-300 hover:text-slate-400 active:text-slate-500">
-        {{ category.name }}
-      </a>
-      <span class="mx-2 text-slate-300">/</span>
-      <a routerLink="#" class="text-sm text-slate-500">{{ product.name }}</a>
-    </div>
-  </div>
-</section>
-<section *ngIf="product$ | async as product" class="pb-16 pt-4">
-  <div class="container">
-    <div class="grid grid-cols-1 grid-rows-1 gap-4 lg:grid-cols-2">
-      <app-product-gallery></app-product-gallery>
-      <div class="col-span-1 flex flex-col gap-1 p-4">
-        <div class="relative h-5 self-start pr-2">
-          <span
-            class="relative z-20 text-xs font-semibold uppercase leading-none text-blue-800"
-            >{{ product.category }}</span
-          >
-          <div class="absolute bottom-0 z-10 h-2 w-full bg-rose-50"></div>
-        </div>
-        <h1 class="font-serif text-3xl text-blue-900">
-          {{ product?.name }}
-        </h1>
-        <p class="mb-4 line-clamp-3 overflow-ellipsis text-slate-600">
-          {{ product?.long_description }}
-        </p>
-        <app-offer-selector [product]="product"></app-offer-selector>
-        <button class="btn mt-4" (click)="cart.addProductToCart(product)">
-          <span class="text-base font-medium text-white">Add to Cart</span>
-        </button>
-        <app-accordion>
-          <app-accordion-item title="Product Details">
-            <p>Product Details</p>
-          </app-accordion-item>
-          <app-accordion-item title="Ingredients">
-            <p>{{ product?.ingredients }}</p>
-          </app-accordion-item>
-          <app-accordion-item title="Related Products">
-            <p>Related Products</p>
-          </app-accordion-item>
-        </app-accordion>
+@if (product(); as product) {
+  <!-- Breadcrumbs -->
+  <section class="py-4">
+    <div class="container">
+      <div class="flex w-full gap-1">
+        <a
+          routerLink="/products"
+          class="text-sm text-slate-300 transition-colors duration-300 hover:text-slate-400 active:text-slate-500"
+          >Products</a
+        >
+        <span class="mx-2 text-slate-300">/</span>
+        @if (category(); as category) {
+          <a
+            routerLink="/products/category/{{ category.slug }}"
+            class="text-sm text-slate-300 transition-colors duration-300 hover:text-slate-400 active:text-slate-500">
+            {{ category.name }}
+          </a>
+        }
+        <span class="mx-2 text-slate-300">/</span>
+        <a routerLink="#" class="text-sm text-slate-500">{{ product.name }}</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="pb-16 pt-4">
+    <div class="container">
+      <div class="grid grid-cols-1 grid-rows-1 gap-4 lg:grid-cols-2">
+        <!-- Product Image Gallery -->
+        <app-product-image-gallery></app-product-image-gallery>
+
+        <!-- Product Details -->
+        <div class="col-span-1 flex flex-col gap-1 px-8 py-4">
+          <div class="relative h-5 self-start pr-2">
+            <span
+              class="relative z-20 text-xs font-semibold uppercase leading-none text-blue-800"
+              >{{ product.category }}</span
+            >
+            <div class="absolute bottom-0 z-10 h-2 w-full bg-rose-50"></div>
+          </div>
+          <div class="flex w-full items-center justify-between">
+            <h1 class="font-serif text-3xl text-blue-900">
+              {{ product?.name }}
+            </h1>
+            <button class="relative h-6 w-6 text-slate-500 hover:text-rose-500">
+              <app-custom-icon name="heart" size="24"></app-custom-icon>
+            </button>
+          </div>
+          <p class="mb-4 line-clamp-3 overflow-ellipsis text-slate-600">
+            {{ product?.long_description }}
+          </p>
+          <app-offer-selector [price]="product.price"></app-offer-selector>
+
+          @defer (on viewport) {
+            <app-accordion>
+              <app-accordion-item title="Product Details">
+                <p>Product Details</p>
+              </app-accordion-item>
+              <app-accordion-item title="Ingredients">
+                <p>{{ product?.ingredients }}</p>
+              </app-accordion-item>
+              <app-accordion-item title="Related Products">
+                <p>Related Products</p>
+              </app-accordion-item>
+            </app-accordion>
+          } @placeholder {
+            <div
+              class="h-10 w-full animate-pulse rounded-md bg-slate-200"></div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+}

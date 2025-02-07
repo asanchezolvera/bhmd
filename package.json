@@ -18,7 +18,7 @@
     "@ng-icons/core": "^30.2.0",
     "@ng-icons/simple-icons": "^30.2.0",
     "@stripe/stripe-js": "^2.2.0",
-    "@supabase/supabase-js": "^2.39.0",
+    "@supabase/supabase-js": "^2.39.7",
     "front-matter": "^4.0.2",
     "marked": "^11.0.0",
     "rxjs": "^7.8.1",

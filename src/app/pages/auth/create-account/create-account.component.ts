@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterLink } from "@angular/router";
-import { CreateAccountFormComponent } from "@features/create-account/create-account-form.component";
+import { CreateAccountFormComponent } from "@components/auth/create-account/create-account-form.component";
 
 @Component({
   selector: "app-create-account",

@@ -9,7 +9,7 @@ import { ProductsComponent } from "@pages/products/products.component";
 import { ProductDetailComponent } from "@pages/product-detail/product-detail.component";
 import { CreateAccountComponent } from "@pages/auth/create-account/create-account.component";
 import { LoginComponent } from "@pages/auth/login/login.component";
-
+import { ConcernsComponent } from "@pages/concerns/concerns.component";
 export const routes: Routes = [
   {
     path: "",
@@ -17,7 +17,8 @@ export const routes: Routes = [
     children: [
       { path: "", component: HomeComponent },
       { path: "blog", component: BlogComponent },
-      { path: "category/:slug", component: CategoriesComponent },
+      { path: "products/category/:slug", component: CategoriesComponent },
+      { path: "products/concern/:slug", component: ConcernsComponent },
       { path: "legal/:fileName", component: LegalComponent },
       { path: "products", component: ProductsComponent },
       { path: "product/:slug", component: ProductDetailComponent },
