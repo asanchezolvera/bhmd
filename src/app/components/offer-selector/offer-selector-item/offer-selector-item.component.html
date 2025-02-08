@@ -36,5 +36,16 @@
   </div>
 
   <!-- Offer label -->
-  <span class="font-medium text-slate-700">{{ price | currency }}</span>
+  <div class="flex items-center justify-end gap-2">
+    @if (label === "Subscribe + Save") {
+      <span class="font-medium text-slate-700">{{
+        price * 0.9 | currency
+      }}</span>
+      <span class="text-slate-400 line-through">
+        {{ price | currency }}
+      </span>
+    } @else {
+      <span class="font-medium text-slate-700">{{ price | currency }}</span>
+    }
+  </div>
 </label>

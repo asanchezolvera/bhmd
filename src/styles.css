@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-serif: Guyot-Headline, serif;
+  --font-sans: Proxima Nova, sans-serif;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
 html,
 body {
   @apply min-h-screen w-full overflow-x-hidden;
@@ -45,11 +70,11 @@ input[type="search"] {
 }
 
 .nav-link {
-  @apply text-sm font-medium text-slate-600 transition-colors duration-300 hover:text-slate-500 active:text-blue-600;
+  @apply cursor-pointer text-sm font-medium text-slate-600 transition-colors duration-300 hover:text-slate-500 active:text-blue-600;
 }
 
 .nav-dropdown-link {
-  @apply relative inline-flex items-center gap-1 text-sm font-medium transition-colors duration-300;
+  @apply relative inline-flex cursor-pointer items-center gap-1 text-sm font-medium transition-colors duration-300;
 }
 
 .text-link {

@@ -1,5 +1,5 @@
 <div
-  class="fade-in absolute bottom-0 left-0 right-0 top-0 z-40 flex min-h-screen w-screen items-stretch justify-end overflow-hidden bg-black/20">
+  class="fade-in absolute top-0 right-0 bottom-0 left-0 z-40 flex min-h-screen w-screen items-stretch justify-end overflow-hidden bg-black/20">
   <button
     class="transparent md:5/12 h-full w-1/12 cursor-default lg:w-full"
     (click)="onCloseMenu()"></button>
@@ -18,29 +18,46 @@
             cart.cart().length
           }}</span>
         </div>
-        <button class="text-xs font-medium text-red-500">Clear All</button>
       </div>
 
       <button
-        class="flex h-8 w-8 items-center justify-center"
+        class="flex h-8 w-8 cursor-pointer items-center justify-center"
         (click)="onCloseMenu()">
-        <app-custom-icon name="x" size="32"></app-custom-icon>
+        <app-custom-icon
+          name="x"
+          size="32"
+          class="text-slate-700 transition-colors duration-300 hover:text-slate-600 active:text-slate-800"></app-custom-icon>
       </button>
     </div>
 
     <!-- Cart Items -->
     <div class="flex h-full w-full flex-col gap-2 p-4">
-      <app-cart-item
-        *ngFor="let item of products"
-        [item]="item"></app-cart-item>
+      @for (item of cart.cart(); track item.id) {
+        <app-cart-item [item]="item"></app-cart-item>
+      }
     </div>
 
     <!-- Cart Bottom -->
-    <div class="border-t border-slate-100 p-4">
-      <button class="btn flex w-full items-center justify-center gap-2">
+    <div
+      class="flex flex-col items-center justify-center gap-2 border-t border-slate-100 p-4">
+      <button
+        class="btn flex w-full items-center justify-center gap-2 px-4 py-[10px] shadow-xl">
         <app-custom-icon name="checkout" size="24"></app-custom-icon>
         <span class="text-base">Go to Checkout</span>
       </button>
+      <div class="flex items-center gap-1">
+        <span class="text-xs text-slate-500">
+          Or pay in four interest-free payments with
+        </span>
+        <img
+          src="images/afterpay-logo.webp"
+          alt="Visa"
+          class="h-3 w-auto object-cover" />
+        <app-custom-icon
+          name="information"
+          size="16"
+          class="text-slate-500"></app-custom-icon>
+      </div>
     </div>
   </div>
 </div>

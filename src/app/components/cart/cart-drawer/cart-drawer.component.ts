@@ -1,8 +1,9 @@
-import { Component, inject, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CartService } from "@src/app/services/cart.service";
 import { CartItemComponent } from "@src/app/components/cart/cart-item/cart-item.component";
 import { CustomIconComponent } from "@src/app/components/icon/custom-icon.component";
+import { CartDrawerService } from "@src/app/services/cartDrawer.service";
 
 @Component({
   selector: "app-cart-drawer",
@@ -10,17 +11,13 @@ import { CustomIconComponent } from "@src/app/components/icon/custom-icon.compon
   templateUrl: "./cart-drawer.component.html",
   standalone: true,
 })
-export class CartDrawerComponent implements OnInit {
-  cart = inject(CartService);
-  products = this.cart.cart();
-  @Output() closeMenu = new EventEmitter<void>();
-  isCartOpen = true;
+export class CartDrawerComponent {
+  protected cart = inject(CartService);
+  protected cartDrawer = inject(CartDrawerService);
+
+  readonly items = this.cart.cart();
 
   onCloseMenu() {
-    this.closeMenu.emit();
+    this.cartDrawer.closeCartDrawer();
   }
-
-  constructor() {}
-
-  ngOnInit() {}
 }
