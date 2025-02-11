@@ -3,6 +3,9 @@
   routerLink="/product/{{ product.slug }}">
   <div
     class="relative z-10 w-full overflow-hidden rounded-md shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
+    @if (product.is_bestseller) {
+      <app-bestseller></app-bestseller>
+    }
     <img
       *ngIf="product?.image_url"
       [src]="product.image_url"

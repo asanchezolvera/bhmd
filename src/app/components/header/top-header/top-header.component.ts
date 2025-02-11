@@ -1,10 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { AuthContentComponent } from "@components/auth-content/auth-content.component";
 import { SliderComponent } from "@components/slider/slider.component";
+import { SupabaseService } from "@services/supabase.service";
 
 @Component({
   selector: "app-top-header",
-  imports: [CommonModule, SliderComponent],
+  imports: [CommonModule, SliderComponent, RouterModule, AuthContentComponent],
   templateUrl: "./top-header.component.html",
   standalone: true,
 })
@@ -25,7 +28,11 @@ export class TopHeaderComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private supabaseService: SupabaseService) {}
+
+  async logOut() {
+    await this.supabaseService.signOut();
+  }
 
   ngOnInit(): void {}
 }

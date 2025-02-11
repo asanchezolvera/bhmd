@@ -4,7 +4,7 @@
     <div
       *ngFor="let slide of slides; let i = index"
       class="slide-left min-w-full"
-      [ngClass]="currentSlideIndex === i ? 'block' : 'hidden'">
+      [ngClass]="currentSlide() === i ? 'block' : 'hidden'">
       <img *ngIf="slide.image" [src]="slide.image" [alt]="slide.alt" />
       <div
         *ngIf="slide.content"
@@ -22,7 +22,7 @@
   <div class="pagination hidden">
     <button
       *ngFor="let slide of slides; let i = index"
-      [ngClass]="{ active: currentSlideIndex === i }"
+      [ngClass]="{ active: currentSlide() === i }"
       (click)="goToSlide(i)"></button>
   </div>
 </div>

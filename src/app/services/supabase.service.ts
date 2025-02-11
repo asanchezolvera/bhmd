@@ -119,14 +119,24 @@ export class SupabaseService {
     return data;
   }
 
-  /* Get products by category */
+  /* Get products by category with improved error handling */
   async getProductsByCategory(categoryName: string): Promise<Product[]> {
-    const { data, error } = await this.supabase
-      .from("products")
-      .select("*")
-      .eq("category", categoryName);
-    if (error) throw error;
-    return data;
+    try {
+      const { data, error } = await this.supabase
+        .from("products")
+        .select("*")
+        .eq("category", categoryName);
+
+      if (error) {
+        console.error("Database error:", error.message);
+        throw new Error(`Failed to fetch products: ${error.message}`);
+      }
+
+      return data || [];
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      throw new Error("An unexpected error occurred while fetching products");
+    }
   }
 
   /* Get products by concern */
@@ -161,7 +171,7 @@ export class SupabaseService {
     return data;
   }
 
-  /* Update user profile */
+  /* Update user profile with validation */
   async updateProfile({
     id,
     firstName,
@@ -171,13 +181,25 @@ export class SupabaseService {
     firstName: string;
     lastName: string;
   }) {
-    const { error } = await this.supabase.from("user_profiles").upsert({
-      id,
-      first_name: firstName,
-      last_name: lastName,
-      updated_at: new Date().toISOString(),
-    });
+    if (!id || !firstName || !lastName) {
+      throw new Error("Missing required profile information");
+    }
 
-    if (error) throw error;
+    try {
+      const { error } = await this.supabase.from("user_profiles").upsert({
+        id,
+        first_name: firstName,
+        last_name: lastName,
+        updated_at: new Date().toISOString(),
+      });
+
+      if (error) {
+        console.error("Profile update error:", error.message);
+        throw new Error(`Failed to update profile: ${error.message}`);
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      throw new Error("An unexpected error occurred while updating profile");
+    }
   }
 }

@@ -21,21 +21,36 @@
         </button>
       </div>
       <div class="flex w-full items-center justify-between">
-        <div
-          class="relative flex items-center gap-1 rounded-sm border border-slate-200">
-          <select
-            [value]="item.quantity"
-            (change)="updateQuantity($event)"
-            class="flex w-full appearance-none py-1 pr-6 pl-2 text-xs text-slate-700">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
+        <div class="flex items-center gap-2">
+          <!-- Mini Quantity Selector -->
           <div
-            class="pointer-events-none absolute top-0 right-0 bottom-0 flex items-center justify-center px-1">
-            <app-custom-icon name="chevronDown" size="14"></app-custom-icon>
+            class="relative flex items-center gap-1 rounded-sm border border-slate-200">
+            <select
+              [value]="item.quantity"
+              (change)="updateQuantity($event)"
+              class="flex w-full appearance-none py-1 pr-6 pl-2 text-xs text-slate-700">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <div
+              class="pointer-events-none absolute top-0 right-0 bottom-0 flex items-center justify-center px-1">
+              <app-custom-icon name="chevronDown" size="14"></app-custom-icon>
+            </div>
           </div>
+          @if (item.isSubscription) {
+            <div
+              class="flex items-center gap-1 rounded-full bg-green-50 px-3 py-1">
+              <app-custom-icon
+                name="check"
+                size="14"
+                class="text-green-700"></app-custom-icon>
+              <span class="text-xs font-medium text-green-700">Subscribed</span>
+            </div>
+          }
         </div>
+
+        <!-- Mini Price -->
         <p class="text-sm font-medium text-slate-700">
           {{ item.price * item.quantity | currency }}
         </p>
@@ -43,11 +58,12 @@
     </div>
   </div>
   @if (!item.isSubscription) {
-    <div
-      class="flex w-full items-center justify-center rounded-md border bg-blue-50 p-2">
+    <button
+      class="flex w-full cursor-pointer items-center justify-center rounded-md border border-blue-100 bg-blue-50 p-2"
+      (click)="item.isSubscription = true">
       <span class="text-center text-xs font-medium text-blue-500"
-        >Subscribe & save 20% + free shipping</span
+        >Subscribe & save for 20% off + free shipping</span
       >
-    </div>
+    </button>
   }
 </div>

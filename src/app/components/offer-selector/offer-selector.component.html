@@ -18,8 +18,8 @@
     <button
       (click)="addToCart()"
       class="btn flex h-full items-center justify-center gap-1 px-4 py-3 shadow-xl">
-      <span class="leading-none font-semibold text-white">Add to Cart |</span>
-      <span class="text-sm leading-none font-semibold text-white">
+      <span class="text-sm font-semibold text-white">Add to Cart |</span>
+      <span class="text-sm font-semibold text-white">
         {{
           selectedOffer === "subscribe"
             ? (price * quantity * 0.9 | currency)

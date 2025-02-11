@@ -61,11 +61,17 @@
         </a>
         <!-- Nav Right -->
         <nav class="flex items-center justify-end gap-4">
-          <button class="h-6 w-6">
+          <button
+            class="h-6 w-6 cursor-pointer text-slate-700 transition-colors duration-300 hover:text-slate-600 active:text-blue-500">
             <app-custom-icon name="search" size="24"></app-custom-icon>
           </button>
           <button
-            class="relative h-6 w-6"
+            [ngClass]="{
+              'text-blue-600': cart.cart().length > 0,
+              'text-slate-700 hover:text-slate-600 active:text-blue-500':
+                cart.cart().length === 0,
+            }"
+            class="relative h-6 w-6 cursor-pointer transition-colors duration-300"
             (click)="cartDrawer.showCartDrawer()">
             <app-custom-icon name="shoppingBag" size="24"></app-custom-icon>
             <div

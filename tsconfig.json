@@ -27,7 +27,7 @@
       "@content/*": ["./src/app/content/*"],
       "@core/*": ["./src/app/core/*"],
       "@features/*": ["./src/app/features/*"],
-      "@guards/*": ["./src/app/core/guards/*"],
+      "@guards/*": ["./src/app/guards/*"],
       "@layouts/*": ["./src/app/core/layouts/*"],
       "@models/*": ["src/app/models/*"],
       "@pages/*": ["./src/app/pages/*"],

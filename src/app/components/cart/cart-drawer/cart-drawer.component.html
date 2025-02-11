@@ -11,10 +11,12 @@
     <!-- Header -->
     <div class="flex w-full items-center justify-between p-4">
       <div class="flex items-center gap-2">
-        <h6 class="font-serif text-lg font-medium text-blue-900">My Cart</h6>
+        <h6 class="font-serif text-xl font-medium text-blue-900">
+          My Shopping Cart
+        </h6>
         <div
-          class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-50">
-          <span class="text-sm font-semibold text-slate-600">{{
+          class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50">
+          <span class="text-sm font-semibold text-blue-700">{{
             cart.cart().length
           }}</span>
         </div>
@@ -40,11 +42,14 @@
     <!-- Cart Bottom -->
     <div
       class="flex flex-col items-center justify-center gap-2 border-t border-slate-100 p-4">
+      <!-- Checkout Button -->
       <button
         class="btn flex w-full items-center justify-center gap-2 px-4 py-[10px] shadow-xl">
-        <app-custom-icon name="checkout" size="24"></app-custom-icon>
-        <span class="text-base">Go to Checkout</span>
+        <app-custom-icon name="checkout" size="20"></app-custom-icon>
+        <span class="text-sm font-medium">Go to Checkout</span>
       </button>
+
+      <!-- Afterpay -->
       <div class="flex items-center gap-1">
         <span class="text-xs text-slate-500">
           Or pay in four interest-free payments with
