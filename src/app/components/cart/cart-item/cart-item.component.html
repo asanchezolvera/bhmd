@@ -10,25 +10,60 @@
 
     <div class="flex w-full flex-col justify-center gap-1">
       <div class="flex w-full items-center justify-between">
-        <h6 class="font-serif text-sm text-blue-900">{{ item.name }}</h6>
+        <h6
+          class="line-clamp-1 font-serif text-sm overflow-ellipsis text-blue-900">
+          {{ item.name }}
+        </h6>
         <button
-          class="flex h-6 w-6 items-center justify-center text-red-500"
+          class="flex h-6 w-6 cursor-pointer items-center justify-center text-red-500 transition-colors duration-300 hover:text-red-400 active:text-red-600"
           (click)="cart.removeProductFromCart(item)">
-          <app-custom-icon name="trashCan" size="24"></app-custom-icon>
+          <app-custom-icon name="trashCan" size="20"></app-custom-icon>
         </button>
       </div>
       <div class="flex w-full items-center justify-between">
-        <p class="text-sm text-slate-500">Qty: 1</p>
-        <p class="text-xs font-medium text-slate-500">
-          {{ item.price | currency }}
+        <div class="flex items-center gap-2">
+          <!-- Mini Quantity Selector -->
+          <div
+            class="relative flex items-center gap-1 rounded-sm border border-slate-200">
+            <select
+              [value]="item.quantity"
+              (change)="updateQuantity($event)"
+              class="flex w-full appearance-none py-1 pr-6 pl-2 text-xs text-slate-700">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <div
+              class="pointer-events-none absolute top-0 right-0 bottom-0 flex items-center justify-center px-1">
+              <app-custom-icon name="chevronDown" size="14"></app-custom-icon>
+            </div>
+          </div>
+          @if (item.isSubscription) {
+            <div
+              class="flex items-center gap-1 rounded-full bg-green-50 px-3 py-1">
+              <app-custom-icon
+                name="check"
+                size="14"
+                class="text-green-700"></app-custom-icon>
+              <span class="text-xs font-medium text-green-700">Subscribed</span>
+            </div>
+          }
+        </div>
+
+        <!-- Mini Price -->
+        <p class="text-sm font-medium text-slate-700">
+          {{ item.price * item.quantity | currency }}
         </p>
       </div>
     </div>
   </div>
-  <div
-    class="flex w-full items-center justify-center rounded-md border border-blue-500 p-2">
-    <span class="text-center text-sm font-medium text-blue-500"
-      >Subscribe & save 20% + free shipping</span
-    >
-  </div>
+  @if (!item.isSubscription) {
+    <button
+      class="flex w-full cursor-pointer items-center justify-center rounded-md border border-blue-100 bg-blue-50 p-2"
+      (click)="item.isSubscription = true">
+      <span class="text-center text-xs font-medium text-blue-500"
+        >Subscribe & save for 20% off + free shipping</span
+      >
+    </button>
+  }
 </div>

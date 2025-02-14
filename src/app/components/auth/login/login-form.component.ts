@@ -10,6 +10,7 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
+import { signal } from "@angular/core";
 
 @Component({
   selector: "app-login-form",
@@ -18,11 +19,10 @@ import {
   standalone: true,
 })
 export class LoginFormComponent {
-  submitted = false;
-  email = new FormControl("", [Validators.required, Validators.email]);
-  password = new FormControl("", [Validators.required]);
-
   loginForm: FormGroup;
+  submitted = signal(false);
+  loading = signal(false);
+  errorMessage = signal<string | null>(null);
 
   constructor(
     private fb: FormBuilder,
@@ -31,18 +31,25 @@ export class LoginFormComponent {
   ) {
     this.loginForm = this.fb.group({
       email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required]],
+      password: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
   async onSubmit() {
+    this.submitted.set(true);
+    this.errorMessage.set(null);
+
     if (this.loginForm.valid) {
       try {
+        this.loading.set(true);
         const { email, password } = this.loginForm.value;
         await this.supabaseService.signIn(email, password);
         this.router.navigate(["/"]);
       } catch (error) {
         console.error("Login failed:", error);
+        this.errorMessage.set("Invalid email or password");
+      } finally {
+        this.loading.set(false);
       }
     }
   }

@@ -6,13 +6,41 @@
         class="h-6 w-1/2 text-xs text-slate-600"
         [slides]="SLIDES"
         [autoPlay]="true"
-        [autoPlayInterval]="5000"></app-slider>
+        [autoPlayDelay]="5000"></app-slider>
       <!-- Nav Right -->
-      <div class="flex items-center justify-end gap-4">
-        <a href="/login" class="text-xs text-slate-600">Log In</a>
-        <div class="h-4 w-[1px] bg-slate-300"></div>
-        <a href="/create-account" class="text-xs text-slate-600">Sign Up</a>
-      </div>
+
+      <app-auth-content
+        [authenticatedContent]="authenticatedContent"
+        [fallbackContent]="fallbackContent">
+      </app-auth-content>
+
+      <!-- Authenticated Content -->
+      <ng-template #authenticatedContent>
+        <div class="flex items-center justify-end gap-4">
+          <a routerLink="/my-account" class="text-xs text-slate-600"
+            >My Account</a
+          >
+          <div class="h-4 w-[1px] bg-slate-300"></div>
+          <a routerLink="/create-account" class="text-xs text-slate-600"
+            >Orders</a
+          >
+          <div class="h-4 w-[1px] bg-slate-300"></div>
+          <button (click)="logOut()" class="text-xs text-slate-600">
+            Log Out
+          </button>
+        </div>
+      </ng-template>
+
+      <!-- Fallback Content -->
+      <ng-template #fallbackContent>
+        <div class="flex items-center justify-end gap-4">
+          <a routerLink="/login" class="text-xs text-slate-600">Log In</a>
+          <div class="h-4 w-[1px] bg-slate-300"></div>
+          <a routerLink="/create-account" class="text-xs text-slate-600"
+            >Sign Up</a
+          >
+        </div>
+      </ng-template>
     </div>
   </div>
 </section>

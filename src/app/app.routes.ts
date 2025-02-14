@@ -10,26 +10,44 @@ import { ProductDetailComponent } from "@pages/product-detail/product-detail.com
 import { CreateAccountComponent } from "@pages/auth/create-account/create-account.component";
 import { LoginComponent } from "@pages/auth/login/login.component";
 import { ConcernsComponent } from "@pages/concerns/concerns.component";
+import { authGuard } from "./guards/auth.guard";
+import { publicGuard } from "./guards/public.guard";
+import { MyAccountComponent } from "@pages/my-account/my-account.component";
+
 export const routes: Routes = [
   {
     path: "",
     component: MainLayoutComponent,
     children: [
+      // All routes are public by default
       { path: "", component: HomeComponent },
-      { path: "blog", component: BlogComponent },
-      { path: "products/category/:slug", component: CategoriesComponent },
-      { path: "products/concern/:slug", component: ConcernsComponent },
-      { path: "legal/:fileName", component: LegalComponent },
       { path: "products", component: ProductsComponent },
       { path: "product/:slug", component: ProductDetailComponent },
+      { path: "blog", component: BlogComponent },
+      { path: "legal/:fileName", component: LegalComponent },
+      { path: "products/category/:slug", component: CategoriesComponent },
+      { path: "products/concern/:slug", component: ConcernsComponent },
+
+      // Only protected routes need the authGuard
+      {
+        path: "my-account",
+        component: MyAccountComponent,
+        canActivate: [authGuard],
+      },
+      /*       {
+        path: "orders",
+        component: OrdersComponent,
+        canActivate: [authGuard],
+      }, */
     ],
   },
   {
     path: "",
     component: AuthLayoutComponent,
+    canActivate: [publicGuard], // Keep auth pages protected from logged-in users
     children: [
-      { path: "create-account", component: CreateAccountComponent },
       { path: "login", component: LoginComponent },
+      { path: "create-account", component: CreateAccountComponent },
     ],
   },
 ];

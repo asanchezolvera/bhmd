@@ -1,0 +1,20 @@
+@if (authState.isAuthenticated()) {
+  <ng-container
+    [ngTemplateOutlet]="authenticatedContent"
+    [ngTemplateOutletContext]="{ $implicit: authState.currentUser() }">
+  </ng-container>
+} @else {
+  <ng-container
+    [ngTemplateOutlet]="fallbackContent || defaultFallback"
+    [ngTemplateOutletContext]="{ $implicit: null }">
+  </ng-container>
+}
+
+<ng-template #defaultFallback>
+  <div class="rounded-md bg-blue-50 p-4">
+    <p class="text-sm text-blue-700">
+      Please <a routerLink="/login" class="font-medium underline">log in</a>
+      to view this content
+    </p>
+  </div>
+</ng-template>

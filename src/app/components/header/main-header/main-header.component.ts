@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Router, NavigationEnd } from "@angular/router";
 import { CartService } from "@services/cart.service";
+import { CartDrawerService } from "@services/cartDrawer.service";
 import { TopHeaderComponent } from "@components/header/top-header/top-header.component";
 import { CustomIconComponent } from "@components/icon/custom-icon.component";
 import { ShopMegaMenuComponent } from "@components/mega-menu/shop-mega-menu/shop-mega-menu.component";
@@ -22,8 +23,9 @@ import { filter } from "rxjs/operators";
 })
 export class HeaderComponent implements OnInit {
   cart = inject(CartService);
-  isMegaMenuOpen = false;
+  cartDrawer = inject(CartDrawerService);
   isCartDrawerOpen = false;
+  isMegaMenuOpen = false;
 
   constructor(private router: Router) {}
 
@@ -42,23 +44,11 @@ export class HeaderComponent implements OnInit {
     this.isMegaMenuOpen = !this.isMegaMenuOpen;
   }
 
-  toggleCartDrawer() {
-    this.isCartDrawerOpen = !this.isCartDrawerOpen;
-  }
-
   showMegaMenu() {
     this.isMegaMenuOpen = true;
   }
 
-  showCartDrawer() {
-    this.isCartDrawerOpen = true;
-  }
-
   closeMegaMenu() {
     this.isMegaMenuOpen = false;
-  }
-
-  closeCartDrawer() {
-    this.isCartDrawerOpen = false;
   }
 }

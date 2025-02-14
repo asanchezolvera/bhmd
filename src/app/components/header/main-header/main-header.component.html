@@ -1,4 +1,4 @@
-<header class="fixed left-0 right-0 top-0 z-50 w-full shadow-md">
+<header class="fixed top-0 right-0 left-0 z-50 w-full shadow-md">
   <app-top-header></app-top-header>
   <section class="border-b border-slate-300 bg-white py-4">
     <div class="container">
@@ -18,10 +18,10 @@
           <nav class="flex gap-4">
             <button
               id="shop"
-              class="nav-dropdown-link"
+              class="nav-dropdown-link transition-colors duration-300"
               [ngClass]="{
                 'text-blue-600': isMegaMenuOpen,
-                'text-slate-600': !isMegaMenuOpen,
+                'text-slate-600 hover:text-slate-500': !isMegaMenuOpen,
               }"
               (click)="toggleMegaMenu()">
               <span>Shop</span>
@@ -36,13 +36,23 @@
                   }"></app-custom-icon>
               </div>
             </button>
-            <button id="Learn" class="nav-dropdown-link">
+            <button
+              id="Learn"
+              class="nav-dropdown-link transition-colors duration-300"
+              [ngClass]="{
+                'text-blue-600': isMegaMenuOpen,
+                'text-slate-600 hover:text-slate-500': !isMegaMenuOpen,
+              }">
               <span>Learn</span>
               <div>
                 <app-custom-icon name="chevronDown" size="20"></app-custom-icon>
               </div>
             </button>
-            <a href="/luxe-loyalty" class="nav-link">Earn Rewards</a>
+            <a
+              href="/luxe-loyalty"
+              class="nav-link text-slate-600 transition-colors duration-300 hover:text-slate-500 active:text-blue-600"
+              >Earn Rewards</a
+            >
           </nav>
         </div>
         <!-- Nav Center -->
@@ -51,14 +61,22 @@
         </a>
         <!-- Nav Right -->
         <nav class="flex items-center justify-end gap-4">
-          <button class="h-6 w-6">
+          <button
+            class="h-6 w-6 cursor-pointer text-slate-700 transition-colors duration-300 hover:text-slate-600 active:text-blue-500">
             <app-custom-icon name="search" size="24"></app-custom-icon>
           </button>
-          <button class="relative h-6 w-6" (click)="toggleCartDrawer()">
+          <button
+            [ngClass]="{
+              'text-blue-600': cart.cart().length > 0,
+              'text-slate-700 hover:text-slate-600 active:text-blue-500':
+                cart.cart().length === 0,
+            }"
+            class="relative h-6 w-6 cursor-pointer transition-colors duration-300"
+            (click)="cartDrawer.showCartDrawer()">
             <app-custom-icon name="shoppingBag" size="24"></app-custom-icon>
             <div
               *ngIf="cart.cart().length > 0"
-              class="absolute -right-1 -top-1">
+              class="absolute -top-1 -right-1">
               <div class="h-2 w-2 rounded-full bg-rose-400"></div>
             </div>
           </button>
@@ -70,6 +88,6 @@
     *ngIf="isMegaMenuOpen"
     (closeMenu)="closeMegaMenu()"></app-shop-mega-menu>
   <app-cart-drawer
-    *ngIf="isCartDrawerOpen"
-    (closeMenu)="closeCartDrawer()"></app-cart-drawer>
+    *ngIf="cartDrawer.cartDrawerOpen()"
+    (closeMenu)="cartDrawer.closeCartDrawer()"></app-cart-drawer>
 </header>
