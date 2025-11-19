@@ -15,6 +15,20 @@ body {
   @apply font-sans bg-white overflow-x-hidden min-h-screen text-slate-700;
 }
 
+input {
+  @apply bg-white border rounded-lg border-slate-300 shadow;
+}
+
+input::placeholder {
+  @apply text-slate-400;
+}
+
 .container {
   @apply mx-auto px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 max-w-7xl;
+}
+
+/* Component Styles */
+
+.nav-link-item {
+  @apply text-sm text-slate-500 hover:text-slate-700 transition-colors duration-300;
 }
