@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Dermal Repair Complex™†",
+    "description": "Award-winning supplement designed to combat the key causes of dermal breakdown—resulting in visibly firmer and more lifted skin, reduced wrinkles, and a significantly younger, radiant overall appearance.",
+    "price": "58.00",
+    "memberPrice": "39.95",
+    "rating": "5.0",
+    "category": "Supplements",
+    "isBestSeller": true
+  },
+  {
+    "id": 2,
+    "name": "Skin Perfexion Correcting Complex",
+    "description": "A multi-action complexion corrector that visibly softens wrinkles and neutralizes redness.",
+    "price": "80.00",
+    "memberPrice": "49.95",
+    "rating": "4.8",
+    "category": "Masks + Treatments",
+    "isBestSeller": false
+  },
+  {
+    "id": 3,
+    "name": "Moisture Lock Botanical Essence",
+    "description": "This first-of-its-kind essence features compounds famous for helping seal in ample hydration—resulting in visibly smoother, firmer skin with a radiant glow.",
+    "price": "120.00",
+    "memberPrice": "49.95",
+    "rating": "5.0",
+    "category": "Cleansers + Essences",
+    "isBestSeller": false
+  }
+]
