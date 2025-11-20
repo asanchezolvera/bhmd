@@ -1,31 +1,54 @@
 <header class="w-screen bg-white flex flex-col justify-center items-stretch">
-  <div id="top-header " class="w-full flex justify-center items-center py-3 bg-white">
-    <div class="container">
-      <div class="flex justify-between items-center">
-        <img src="/images/bhmd-logo-full.webp" class="w-auto h-8 object-contain" />
-        <input
-          type="search"
-          name="search"
-          id="search"
-          placeholder="Search..."
-          class="px-4 py-2 w-2xl"
-        />
-        <div
-          class="w-12 h-12 flex justify-center items-center hover:bg-slate-50 transition-colors duration-300 rounded-lg"
-        >
-          Cart
+  <div id="top-header " class="w-full flex justify-center items-center py-3">
+    <div class="nav-container">
+      <div class="grid grid-cols-5 items-center gap-6 w-full">
+        <div class="col-span-1 flex justify-start items-center shrink-0">
+          <img
+            src="/images/bhmd-logo-small.webp"
+            class="w-auto h-[30px] object-contain lg:hidden"
+          />
+          <img
+            src="/images/bhmd-logo-full.webp"
+            class="w-auto h-[30px] object-contain hidden lg:block"
+          />
+        </div>
+        <div class="col-span-3 flex justify-center items-center">
+          <div class="w-full relative">
+            <div
+              class="absolute top-1/2 left-3 -translate-y-1/2 flex justify-center items-center text-slate-400"
+            >
+              <ng-icon name="lucideSearch" size="20" class=""></ng-icon>
+            </div>
+            <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Search..."
+              class="pl-10 pr-4 py-2.5 w-full"
+            />
+          </div>
+        </div>
+        <div class="col-span-1 flex justify-end items-center gap-2">
+          <app-header-user-button></app-header-user-button>
+          <app-header-cart-button></app-header-cart-button>
         </div>
       </div>
     </div>
   </div>
-  <div id="bottom-header" class="w-full flex justify-center items-center py-2 bg-blue-50">
-    <div class="container">
-      <ul class="flex gap-4">
+  <div id="bottom-header" class="w-full flex justify-center items-center">
+    <div class="nav-container">
+      <ul class="flex justify-around items-center w-full">
+        <li class="nav-link-item">Shop All</li>
         <li class="nav-link-item">Best Sellers</li>
         <li class="nav-link-item">Bundles</li>
         <li class="nav-link-item">Supplements</li>
-        <li class="nav-link-item">About</li>
-        <li class="nav-link-item">Contact</li>
+        <li class="nav-link-item">Cleansers</li>
+        <li class="nav-link-item">Toners</li>
+        <li class="nav-link-item">Exfoliants</li>
+        <li class="nav-link-item">Moisturizers</li>
+        <li class="nav-link-item">Eye + Lip Care</li>
+        <li class="nav-link-item">Body</li>
+        <li class="nav-link-item">Serums + Oils</li>
       </ul>
     </div>
   </div>

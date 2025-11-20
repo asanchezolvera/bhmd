@@ -16,19 +16,32 @@ body {
 }
 
 input {
-  @apply bg-white border rounded-lg border-slate-300 shadow;
+  @apply bg-white border rounded-lg border-slate-300 shadow-sm hover:border-slate-400 focus:border-blue-500/10 focus:ring-4 focus:ring-blue-500/25 outline-none focus:shadow-none transition-all duration-300 text-slate-700;
 }
 
 input::placeholder {
   @apply text-slate-400;
 }
 
+button {
+  @apply cursor-pointer transition-all duration-300 border border-transparent focus:border-blue-500/10 focus:ring-4 focus:ring-blue-500/25 outline-none;
+}
+
+.container,
+.nav-container {
+  @apply mx-auto px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 w-full;
+}
+
 .container {
-  @apply mx-auto px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 max-w-7xl;
+  @apply max-w-7xl;
+}
+
+.nav-container {
+  @apply max-w-[1440px];
 }
 
 /* Component Styles */
 
 .nav-link-item {
-  @apply text-sm text-slate-500 hover:text-slate-700 transition-colors duration-300;
+  @apply text-sm font-medium whitespace-nowrap text-slate-500 rounded-md hover:text-slate-700 bg-transparent hover:bg-slate-50 transition-colors duration-300 py-2 px-3;
 }
