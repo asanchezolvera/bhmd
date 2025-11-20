@@ -10,11 +10,15 @@
 ********************/
 
 html {
-  scroll-behavior: smooth;
+  @apply scroll-smooth w-full h-full;
 }
 
 body {
   @apply font-sans bg-white overflow-x-hidden min-h-screen text-slate-700;
+}
+
+:root {
+  @apply w-full h-full;
 }
 
 /* INPUTS */
@@ -58,6 +62,19 @@ button {
 
 .nav-link-item {
   @apply text-sm font-medium whitespace-nowrap text-slate-500 rounded-md hover:text-slate-700 bg-transparent hover:bg-slate-50 transition-colors duration-300 py-2 px-3;
+}
+
+.footer-link-item,
+.sub-footer-link-item {
+  @apply text-slate-300 hover:text-slate-100 hover:underline transition-colors duration-300;
+}
+
+.footer-link-item {
+  @apply text-sm;
+}
+
+.sub-footer-link-item {
+  @apply text-xs;
 }
 
 .overlay {
