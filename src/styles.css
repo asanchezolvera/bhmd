@@ -20,7 +20,7 @@ body {
 /* INPUTS */
 
 input {
-  @apply bg-white border rounded-lg border-slate-300 shadow-sm hover:border-slate-400 focus:border-blue-500/10 focus:ring-4 focus:ring-blue-500/25 outline-none focus:shadow-none transition-all duration-300 text-slate-700;
+  @apply bg-white border rounded-lg border-slate-300 shadow-xs hover:border-slate-400 focus:border-blue-500/10 focus:ring-4 focus:ring-blue-500/25 outline-none focus:shadow-none transition-all duration-300 text-slate-700;
 }
 
 input::placeholder {

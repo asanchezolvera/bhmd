@@ -3,6 +3,11 @@
     <div class="nav-container">
       <div class="grid grid-cols-5 items-center gap-6 w-full">
         <div class="col-span-1 flex justify-start items-center shrink-0">
+          <div class="mr-2 lg:hidden">
+            <button class="header-button">
+              <ng-icon name="lucideMenu" size="24"></ng-icon>
+            </button>
+          </div>
           <img
             src="/images/bhmd-logo-small.webp"
             class="w-auto h-[30px] object-contain lg:hidden"
@@ -13,7 +18,9 @@
           />
         </div>
         <div class="col-span-3 flex justify-center items-center">
-          <div class="w-full max-w-lg relative flex justify-center items-center">
+          <div
+            class="w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg relative flex justify-center items-center"
+          >
             <div
               class="absolute top-1/2 left-3 -translate-y-1/2 flex justify-center items-center text-slate-400"
             >
@@ -24,7 +31,7 @@
               name="search"
               id="search"
               placeholder="Search..."
-              class="pl-10 pr-4 py-2.5 w-full"
+              class="pl-10 pr-3 py-2 w-full"
             />
           </div>
         </div>
