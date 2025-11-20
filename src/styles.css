@@ -5,7 +5,9 @@
   --font-sans: 'helvetica-neue-lt-pro', sans-serif;
 }
 
-/* Base Styles */
+/********************
+* GLOBAL STYLES
+********************/
 
 html {
   scroll-behavior: smooth;
@@ -15,6 +17,8 @@ body {
   @apply font-sans bg-white overflow-x-hidden min-h-screen text-slate-700;
 }
 
+/* INPUTS */
+
 input {
   @apply bg-white border rounded-lg border-slate-300 shadow-sm hover:border-slate-400 focus:border-blue-500/10 focus:ring-4 focus:ring-blue-500/25 outline-none focus:shadow-none transition-all duration-300 text-slate-700;
 }
@@ -23,9 +27,13 @@ input::placeholder {
   @apply text-slate-400;
 }
 
+/* BUTTONS */
+
 button {
-  @apply cursor-pointer transition-all duration-300 border border-transparent focus:border-blue-500/10 focus:ring-4 focus:ring-blue-500/25 outline-none;
+  @apply transition-all duration-300 border border-transparent focus:border-blue-500/10 focus:ring-4 focus:ring-blue-500/25 outline-none;
 }
+
+/* CONTAINERS */
 
 .container,
 .nav-container {
@@ -40,8 +48,67 @@ button {
   @apply max-w-[1440px];
 }
 
-/* Component Styles */
+/********************
+* COMPONENT STYLES
+********************/
+
+.header-button {
+  @apply relative w-10 h-10 flex justify-center items-center rounded-lg hover:bg-slate-50 transition-colors duration-300 cursor-pointer;
+}
 
 .nav-link-item {
   @apply text-sm font-medium whitespace-nowrap text-slate-500 rounded-md hover:text-slate-700 bg-transparent hover:bg-slate-50 transition-colors duration-300 py-2 px-3;
+}
+
+.overlay {
+  @apply fixed inset-0 bg-black/20 backdrop-blur-xs z-50;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/********************
+* KEYFRAMES
+********************/
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/********************
+* ANIMATIONS
+********************/
+
+.fade-in {
+  animation: fade-in 0.3s ease-in-out forwards;
+}
+
+.slide-left {
+  animation: slide-left 0.3s ease-in-out forwards;
 }

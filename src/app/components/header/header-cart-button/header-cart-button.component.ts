@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CartDrawerService } from '../../../cart/cart-drawer/cart-drawer.service';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideShoppingCart } from '@ng-icons/lucide';
 
@@ -9,4 +10,6 @@ import { lucideShoppingCart } from '@ng-icons/lucide';
   providers: [provideIcons({ lucideShoppingCart })],
   templateUrl: './header-cart-button.component.html',
 })
-export class HeaderCartButtonComponent {}
+export class HeaderCartButtonComponent {
+  readonly cartDrawerService = inject(CartDrawerService);
+}
