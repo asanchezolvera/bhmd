@@ -28,5 +28,15 @@
     "rating": "5.0",
     "category": "Cleansers + Essences",
     "isBestSeller": false
+  },
+  {
+    "id": 4,
+    "name": "Brighten + Tighten Restorative Facial Oil™",
+    "description": "Give your skin a tighter, more radiant appearance with this advanced gel-to-serum solution.",
+    "price": "260.00",
+    "memberPrice": "85.95",
+    "rating": "5.0",
+    "category": "Serums + Oils",
+    "isBestSeller": true
   }
 ]

@@ -10,14 +10,14 @@
 ********************/
 
 html {
-  @apply scroll-smooth w-full h-full;
+  @apply scroll-smooth w-full h-full bg-linear-to-b from-blue-700 to-blue-900;
 }
 
 body {
   @apply font-sans bg-white overflow-x-hidden min-h-screen text-slate-700;
 }
 
-:root {
+main {
   @apply w-full h-full;
 }
 
@@ -61,7 +61,7 @@ button {
 }
 
 .nav-link-item {
-  @apply text-sm font-medium whitespace-nowrap text-slate-500 rounded-md hover:text-slate-700 bg-transparent hover:bg-slate-50 transition-colors duration-300 py-2 px-3;
+  @apply relative whitespace-nowrap rounded-md overflow-hidden bg-transparent py-2 px-3;
 }
 
 .footer-link-item,
